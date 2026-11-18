@@ -18,6 +18,10 @@ Sheet **Reviews** (optional): `expert_id`, `client_name`, `rating`, `text`, `sam
 ## How registrations and enquiries reach you
 Forms (register, contact, enquiry, requirement, report) build a message that the visitor sends to you on WhatsApp or email (or copies/downloads). Set your number and email in `.env.local` (see `.env.example`).
 
+## Hosting (GitHub Pages)
+Every push to `main` builds and publishes the site via `.github/workflows/deploy.yml` to https://udit2405.github.io/anubhav/.
+Set your contact details once in GitHub: Settings → Secrets and variables → Actions → **Variables**: `WHATSAPP` (e.g. 919876543210) and `CONTACT_EMAIL`. For a custom domain: add it under Settings → Pages, and add a variable `CUSTOM_DOMAIN` (e.g. `anubhav.in`). The next build serves the site from the domain root.
+
 ## Run
 ```
 npm install && npm run dev     # http://localhost:3210

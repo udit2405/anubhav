@@ -3,7 +3,9 @@ import { PROS } from "@/lib/static";
 import { ExpertProfile } from "@/components/ExpertProfile";
 import { fetchPublicPro } from "@/lib/server";
 
-export function generateStaticParams() { return PROS.map((p) => ({ id: p.id })); }
+export const dynamicParams = false;
+// Static export needs at least one page; "_" renders "profile not available" until experts are added.
+export function generateStaticParams() { return PROS.length ? PROS.map((p) => ({ id: p.id })) : [{ id: "_" }]; }
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const p = await fetchPublicPro(params.id);
   if (!p) return { title: "Expert profile" };

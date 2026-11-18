@@ -1,4 +1,5 @@
 "use client";
+import { BASE } from "@/lib/base";
 import { useEffect, useMemo, useState } from "react";
 import { makeDeptRank, PREFILL_KEY } from "@/lib/dept";
 import { useTable } from "@/lib/app";
@@ -155,7 +156,7 @@ export function ProfileForm() {
             {err("consent") && <p role="alert" className="text-sm text-red-700 font-medium">{err("consent")}</p>}
             <label className="flex gap-3 items-start"><input type="checkbox" className={chk} checked={s.consentTrue} onChange={(e) => set("consentTrue", e.target.checked)} /><span>I confirm that the information I have provided is true and I have actually served in the positions I have stated. I understand false claims will lead to removal.</span></label>
             <label className="flex gap-3 items-start"><input type="checkbox" className={chk} checked={s.consentNoEndorse} onChange={(e) => set("consentNoEndorse", e.target.checked)} /><span>I understand I am listing as an independent professional and will not claim to represent or be endorsed by any government department or organisation.</span></label>
-            <label className="flex gap-3 items-start"><input type="checkbox" className={chk} checked={s.consentPrivacy} onChange={(e) => set("consentPrivacy", e.target.checked)} /><span>I have read the <a href="/privacy" target="_blank" className="underline font-semibold">Privacy Policy</a>. I consent to my profile (without phone number or email) being shown publicly, and to Anubhav contacting me about enquiries.</span></label>
+            <label className="flex gap-3 items-start"><input type="checkbox" className={chk} checked={s.consentPrivacy} onChange={(e) => set("consentPrivacy", e.target.checked)} /><span>I have read the <a href={BASE + "/privacy"} target="_blank" className="underline font-semibold">Privacy Policy</a>. I consent to my profile (without phone number or email) being shown publicly, and to Anubhav contacting me about enquiries.</span></label>
           </div>
         </>)}
       </div>

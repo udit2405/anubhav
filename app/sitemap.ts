@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { fetchPublicPros } from "@/lib/server";
 const site = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3210";

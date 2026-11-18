@@ -1,4 +1,5 @@
 "use client";
+import { BASE } from "@/lib/base";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTable } from "@/lib/app";
@@ -40,7 +41,7 @@ function Inner() {
       {active.length > 0 && <button className="btn-outline w-full" onClick={() => router.replace("/experts")}>Clear all filters</button>}
     </div>
   );
-  if (!loading && approved.length === 0) return (<div className="container-x py-16 max-w-2xl text-center"><h2 className="text-3xl font-bold">We are onboarding our first experts</h2><p className="mt-3 text-lg text-slate-700">Retired professionals are joining now and profiles will appear here shortly. Looking to hire? Tell us what you need and we will connect you as soon as a match is available.</p><div className="mt-6 flex flex-wrap gap-4 justify-center"><a className="btn-primary" href="/hire">Tell us what you need</a><a className="btn-gold" href="/register">I am a retired professional</a></div></div>);
+  if (!loading && approved.length === 0) return (<div className="container-x py-16 max-w-2xl text-center"><h2 className="text-3xl font-bold">We are onboarding our first experts</h2><p className="mt-3 text-lg text-slate-700">Retired professionals are joining now and profiles will appear here shortly. Looking to hire? Tell us what you need and we will connect you as soon as a match is available.</p><div className="mt-6 flex flex-wrap gap-4 justify-center"><a className="btn-primary" href={BASE + "/hire"}>Tell us what you need</a><a className="btn-gold" href={BASE + "/register"}>I am a retired professional</a></div></div>);
   return (
     <div className="container-x py-8">
       <div className="card p-4 sm:p-5 mb-6"><SearchBox key={f.q} initial={f.q} onSubmit={(q) => setF({ q })} /><p className="mt-3 text-sm text-slate-600">Try: {["Retired railway engineers", "Retired IAS officers in Rajasthan", "Retired civil engineers in Jaipur"].map((x, i) => <button key={x} className="underline mr-3" onClick={() => setF({ q: x })}>{x}</button>)}</p></div>
@@ -54,7 +55,7 @@ function Inner() {
           </div>
           {active.length > 0 && <div className="flex flex-wrap gap-2 mb-4">{active.map((k) => <button key={k} className="chip !text-base !py-1.5 hover:bg-red-50" onClick={() => setF({ [k]: EMPTY[k] } as Partial<Filters>)}>{k === "verifiedOnly" ? "Verified" : k === "minYears" ? `${f.minYears}+ yrs` : String(f[k])} <span className="ml-2 font-bold" aria-label="remove filter">×</span></button>)}</div>}
           {loading ? <Spinner /> : error ? <ErrorBox msg={error} retry={reload} /> : results.length === 0 ? (
-            <Empty title="No experts match your search">Try fewer filters or a broader search, or <button className="underline font-semibold" onClick={() => router.replace("/experts")}>clear everything</button>. You can also <a className="underline font-semibold" href="/hire">post a requirement</a> and we will find suitable experts for you.</Empty>
+            <Empty title="No experts match your search">Try fewer filters or a broader search, or <button className="underline font-semibold" onClick={() => router.replace("/experts")}>clear everything</button>. You can also <a className="underline font-semibold" href={BASE + "/hire"}>post a requirement</a> and we will find suitable experts for you.</Empty>
           ) : (<>
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">{pg.slice.map(({ pro }) => <ExpertCard key={pro.id} p={pro} />)}</div>
             <Pager {...pg} />

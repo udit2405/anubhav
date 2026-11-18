@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { BASE } from "@/lib/base";
 import type { Professional } from "@/lib/types";
 
 export const inr = (n: number | null | undefined) => (n == null ? "" : "₹" + n.toLocaleString("en-IN"));
@@ -9,7 +10,7 @@ export const feeText = (p: Professional) => p.pricingModels.includes("Free Servi
 
 export function Avatar({ p, size = 64 }: { p: Pick<Professional, "name" | "photo">; size?: number }) {
   // eslint-disable-next-line @next/next/no-img-element
-  if (p.photo) return <img src={p.photo} alt={`Photograph of ${p.name}`} width={size} height={size} className="rounded-full object-cover shrink-0 border border-slate-200" style={{ width: size, height: size }} />;
+  if (p.photo) return <img src={p.photo.startsWith("/") ? BASE + p.photo : p.photo} alt={`Photograph of ${p.name}`} width={size} height={size} className="rounded-full object-cover shrink-0 border border-slate-200" style={{ width: size, height: size }} />;
   return <div aria-hidden className="rounded-full bg-navy-800 text-gold-300 flex items-center justify-center font-serif font-bold shrink-0" style={{ width: size, height: size, fontSize: size / 2.8 }}>{initials(p.name)}</div>;
 }
 
