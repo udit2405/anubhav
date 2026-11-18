@@ -1,0 +1,37 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+html { font-size: 18px; }
+body { @apply bg-white text-slate-800 antialiased; }
+h1,h2,h3 { @apply font-serif text-navy-900; }
+:focus-visible { outline: 3px solid #B8923A; outline-offset: 2px; }
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 min-h-[52px] text-base font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer; }
+  .btn-primary { @apply btn bg-navy-800 text-white hover:bg-navy-900; }
+  .btn-gold { @apply btn bg-gold-500 text-white hover:bg-gold-600; }
+  .btn-outline { @apply btn border-2 border-navy-800 text-navy-800 bg-white hover:bg-navy-50; }
+  .btn-sm { @apply min-h-[44px] px-4 text-sm; }
+  .btn-danger { @apply btn bg-red-700 text-white hover:bg-red-800; }
+  .input { @apply w-full min-h-[52px] rounded-lg border border-slate-400 bg-white px-4 text-base text-slate-900 placeholder:text-slate-500 focus:border-navy-700; }
+  textarea.input { @apply py-3; }
+  .label { @apply block text-base font-semibold text-navy-900 mb-1.5; }
+  .hint { @apply text-sm text-slate-600 mt-1; }
+  .card { @apply rounded-xl border border-slate-200 bg-white shadow-sm; }
+  .chip { @apply inline-flex items-center rounded-full bg-navy-50 border border-navy-100 px-3 py-1 text-sm text-navy-800; }
+  .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-14 sm:py-20; }
+}
+
+/* ---- motion (disabled for users who prefer reduced motion) */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.fade-in { animation: fadeIn .35s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal, .reveal.in { opacity: 1; transform: none; transition: none; } .fade-in { animation: none; } * { scroll-behavior: auto !important; } }
+
+/* ---- hero lattice pattern (thin lines, no glow) */
+.hero-pattern { background-color: #0B1B33; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 0 L56 28 L28 56 L0 28 Z' fill='none' stroke='%23B8923A' stroke-opacity='0.13' stroke-width='1'/%3E%3Ccircle cx='28' cy='28' r='3' fill='none' stroke='%23B8923A' stroke-opacity='0.16'/%3E%3C/svg%3E"); }
+
+/* ---- big, easy range sliders */
+input.range { -webkit-appearance: none; appearance: none; height: 10px; border-radius: 999px; background: #25446F; margin: 14px 0 6px; cursor: pointer; }
+input.range::-webkit-slider-thumb { -webkit-appearance: none; height: 32px; width: 32px; border-radius: 50%; background: #B8923A; border: 4px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
+input.range::-moz-range-thumb { height: 26px; width: 26px; border-radius: 50%; background: #B8923A; border: 4px solid #fff; }
+html { scroll-behavior: smooth; }
