@@ -77,6 +77,14 @@ export default function Home() {
         <p className="mt-6 text-lg">Still unsure? <Link href="/contact" className="underline font-semibold">Talk to us</Link>. We are happy to help you register.</p>
       </section>
 
+      <section className="section bg-navy-50" aria-labelledby="saathi"><div className="container-x grid lg:grid-cols-2 gap-10 items-center">
+        <Reveal><p className="text-gold-700 font-semibold uppercase tracking-wide text-sm">New: Anubhav Saathi</p>
+          <h2 id="saathi" className="mt-2 text-3xl sm:text-4xl font-bold">Need a hand yourself? Or want to help?</h2>
+          <p className="mt-3 text-lg text-slate-700">Verified young helpers who take elders to the hospital and back, run errands, teach phone and WhatsApp, or just keep company. Families can book for their parents from anywhere.</p>
+          <div className="mt-6 flex flex-wrap gap-4"><Link href="/saathi" className="btn-primary">Explore Saathi</Link><Link href="/saathi/helper" className="btn-outline">Earn as a helper</Link></div></Reveal>
+        <Reveal delay={100}><div className="grid grid-cols-2 gap-3">{[["🏥", "Hospital visits"], ["📱", "Phone lessons"], ["🧺", "Errands & chores"], ["🚶", "Companionship"]].map(([i, h]) => <div key={h} className="card p-5 hover:-translate-y-1 hover:shadow-lg transition-all"><span className="text-4xl" aria-hidden>{i}</span><p className="mt-2 font-bold text-lg">{h}</p></div>)}</div></Reveal>
+      </div></section>
+
       <section className="hero-pattern text-white"><div className="container-x py-16 sm:py-20 text-center">
         <Reveal><h2 className="text-3xl sm:text-5xl font-bold !text-white">Experience doesn’t retire.<br className="hidden sm:block" /> <span className="text-gold-300">Put yours to work.</span></h2>
           <p className="mt-4 text-lg text-navy-200 max-w-2xl mx-auto">Join our founding group of experts. Free, and about 10 minutes.</p>

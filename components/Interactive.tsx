@@ -141,12 +141,12 @@ export function Faq({ items }: { items: string[][] }) {
 }
 
 /* ---------- Sticky mobile CTA */
-export function MobileCta() {
+export function MobileCta({ href = "/register", label = "List Your Expertise — Free" }: { href?: string; label?: string }) {
   const [show, setShow] = useState(false);
   useEffect(() => { const h = () => setShow(window.scrollY > 600); h(); window.addEventListener("scroll", h, { passive: true }); return () => window.removeEventListener("scroll", h); }, []);
   return (
     <div className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-200 p-3 transition-transform duration-300 ${show ? "translate-y-0" : "translate-y-full"}`}>
-      <Link href="/register" className="btn-gold w-full">List Your Expertise — Free</Link>
+      <Link href={href} className="btn-gold w-full">{label}</Link>
     </div>
   );
 }
