@@ -77,7 +77,7 @@ export function PageHeader({ title, sub, eyebrow, icon }: { title: string; sub?:
           {eyebrow && <p className="eyebrow">{eyebrow}</p>}
           <h1 className="mt-1 text-3xl sm:text-4xl">{title}</h1>
           <div className="mt-3 h-1 w-14 rounded bg-saffron-600" aria-hidden />
-          {sub && <p className="mt-4 text-lg sm:text-xl text-slate-700">{sub}</p>}
+          {sub && <p className="mt-4 text-base sm:text-lg text-slate-700">{sub}</p>}
         </div>
         {icon && <div className="hidden md:flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl bg-white border border-navy-200 text-6xl shadow-hard" aria-hidden>{icon}</div>}
       </div>
