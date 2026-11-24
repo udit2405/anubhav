@@ -88,8 +88,8 @@ export function ProfileForm() {
 
   if (done) return (
     <div id="form-top" className="space-y-6" role="status">
-      <div className="rounded-xl bg-green-50 border border-green-300 p-6"><h2 className="text-xl font-bold">Almost done, {s.name.split(" ")[0]}! Send your details to us.</h2>
-        <p className="mt-2 text-base text-slate-700">{LEADS_URL ? "Your details have reached our team. " : ""}{LEADS_URL ? "You can also send them on WhatsApp for a faster reply. " : "Choose how you would like to send them. "}Our team adds your profile to the site, usually within 2 working days, and you will get a confirmation. <strong>Please also send your photograph</strong> and, if you want a Verified badge, a photo or PDF of your retirement proof. Reply to the same message with these.</p></div>
+      <div className="rounded-xl bg-green-50 border border-green-300 p-6"><h2 className="text-lg font-bold">Almost done, {s.name.split(" ")[0]}! Send your details to us.</h2>
+        <p className="mt-2 text-sm text-slate-700">{LEADS_URL ? "Your details have reached our team. " : ""}{LEADS_URL ? "You can also send them on WhatsApp for a faster reply. " : "Choose how you would like to send them. "}Our team adds your profile to the site, usually within 2 working days, and you will get a confirmation. <strong>Please also send your photograph</strong> and, if you want a Verified badge, a photo or PDF of your retirement proof. Reply to the same message with these.</p></div>
       <SendButtons subject={`Anubhav expert registration: ${s.name}`} body={buildMessage(s)} filename={`anubhav-${s.name.toLowerCase().replace(/\W+/g, "-")}`} />
       <details className="card p-5"><summary className="font-semibold cursor-pointer">Preview what will be sent</summary><pre className="mt-3 whitespace-pre-wrap text-sm">{buildMessage(s)}</pre></details>
       <button className="btn-outline" onClick={() => setDone(false)}>← Edit my details</button>
@@ -104,7 +104,7 @@ export function ProfileForm() {
 
       <div className="space-y-6">
         {step === 0 && (<>
-          <h2 className="text-xl font-bold">About you</h2>
+          <h2 className="text-lg font-bold">About you</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             <Field label="Full name" required error={err("name")} htmlFor="f-name"><input id="f-name" className="input" autoComplete="name" value={s.name} onChange={(e) => set("name", e.target.value)} placeholder="e.g. Rajesh Kumar Sharma" /></Field>
             <Field label="Age" error={err("age")} htmlFor="f-age" hint="Optional. Kept private."><input id="f-age" className="input" inputMode="numeric" value={s.age} onChange={(e) => set("age", e.target.value.replace(/\D/g, "").slice(0, 3))} /></Field>
@@ -116,7 +116,7 @@ export function ProfileForm() {
           <p className="hint">You will send your profile photograph at the last step, on WhatsApp or email.</p>
         </>)}
         {step === 1 && (<>
-          <h2 className="text-xl font-bold">Your career</h2>
+          <h2 className="text-lg font-bold">Your career</h2>
           <Field label="Government department / organisation" required error={err("department")} htmlFor="f-dept" hint="Start typing, for example “Rail”, “Def” or “Bank”, and pick from the list. If yours is missing, just type it in.">
             <Autocomplete id="f-dept" value={s.department} onChange={(v) => set("department", v)} options={deptOptions} rank={deptRank} placeholder="e.g. Indian Railways" customLabel="Use my own department:" onSelect={(o) => { if (o?.hint && !s.category && CATEGORY_NAMES.includes(o.hint)) set("category", o.hint); }} />
           </Field>
@@ -129,7 +129,7 @@ export function ProfileForm() {
           </div>
         </>)}
         {step === 2 && (<>
-          <h2 className="text-xl font-bold">Your expertise</h2>
+          <h2 className="text-lg font-bold">Your expertise</h2>
           <Field label="Closest professional category" required error={err("category")} htmlFor="f-cat"><select id="f-cat" className="input" value={s.category} onChange={(e) => set("category", e.target.value)}><option value="">Choose…</option>{CATEGORY_NAMES.map((x) => <option key={x}>{x}</option>)}</select></Field>
           <div><p className="label">Specializations <span className="text-red-700">*</span></p><p className="hint mb-2">Select all that apply.</p>
             <CheckGroup legend="Specializations" options={specs.map((x) => x.name)} value={s.specializations} onChange={(v) => set("specializations", v)} columns="sm:grid-cols-2 lg:grid-cols-3" />
@@ -138,7 +138,7 @@ export function ProfileForm() {
           <Field label="Professional summary" required error={err("summary")} htmlFor="f-sum" hint={`Describe your experience in your own words. ${s.summary.trim().length} characters`}><textarea id="f-sum" rows={6} className="input" value={s.summary} onChange={(e) => set("summary", e.target.value)} placeholder="What work did you do, for how long, and how can you help clients now?" /></Field>
         </>)}
         {step === 3 && (<>
-          <h2 className="text-xl font-bold">Services, fees and availability</h2>
+          <h2 className="text-lg font-bold">Services, fees and availability</h2>
           <div><p className="label">Services you are willing to offer <span className="text-red-700">*</span></p><CheckGroup legend="Services" options={SERVICES} value={s.services} onChange={(v) => set("services", v)} />{err("services") && <p role="alert" className="text-sm text-red-700 font-medium mt-2">{err("services")}</p>}</div>
           <div><p className="label">Pricing <span className="text-red-700">*</span></p><p className="hint mb-2">Joining is always free. These are the fees you charge clients.</p><CheckGroup legend="Pricing" options={PRICING} value={s.pricingModels} onChange={(v) => set("pricingModels", v)} columns="sm:grid-cols-3" />{err("pricingModels") && <p role="alert" className="text-sm text-red-700 font-medium mt-2">{err("pricingModels")}</p>}</div>
           <div className="grid gap-6 sm:grid-cols-2">
@@ -149,9 +149,9 @@ export function ProfileForm() {
           <Field label="Languages you can work in" htmlFor="f-lang"><TagInput id="f-lang" value={s.languages} onChange={(v) => set("languages", v)} placeholder="e.g. Hindi, English, Marwari" /></Field>
         </>)}
         {step === 4 && (<>
-          <h2 className="text-xl font-bold">Review and send</h2>
+          <h2 className="text-lg font-bold">Review and send</h2>
           <div className="rounded-xl bg-gold-50 border border-gold-300 p-5"><p className="font-semibold">Verified badge (optional)</p><p className="text-slate-700">After you send this form, reply with a clear <strong>photograph</strong> and, if you want a Verified badge, a photo or PDF of your <strong>retirement proof / experience certificate</strong>. Documents are used only for checking and are never published.</p></div>
-          <dl className="card p-5 grid sm:grid-cols-2 gap-3 text-base">{[["Name", s.name], ["Location", `${s.city}, ${s.state}`], ["Department", s.department], ["Designation", s.designation], ["Experience", `${s.yearsService} years (retired ${s.retirementYear})`], ["Category", s.category], ["Specializations", s.specializations.join(", ")], ["Services", s.services.join(", ")], ["Pricing", `${s.pricingModels.join(", ")}${s.fee ? ` from ₹${s.fee}` : ""}`], ["Availability", s.availability.join(", ")]].map(([a, b]) => <div key={a}><dt className="text-sm text-slate-600">{a}</dt><dd className="font-semibold">{b}</dd></div>)}</dl>
+          <dl className="card p-5 grid sm:grid-cols-2 gap-3 text-sm">{[["Name", s.name], ["Location", `${s.city}, ${s.state}`], ["Department", s.department], ["Designation", s.designation], ["Experience", `${s.yearsService} years (retired ${s.retirementYear})`], ["Category", s.category], ["Specializations", s.specializations.join(", ")], ["Services", s.services.join(", ")], ["Pricing", `${s.pricingModels.join(", ")}${s.fee ? ` from ₹${s.fee}` : ""}`], ["Availability", s.availability.join(", ")]].map(([a, b]) => <div key={a}><dt className="text-sm text-slate-600">{a}</dt><dd className="font-semibold">{b}</dd></div>)}</dl>
           <div className="space-y-3 rounded-xl border border-slate-300 p-5">
             <p className="font-semibold">Declarations <span className="text-red-700">*</span></p>
             {err("consent") && <p role="alert" className="text-sm text-red-700 font-medium">{err("consent")}</p>}
