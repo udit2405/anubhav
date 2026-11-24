@@ -1,16 +1,16 @@
 @tailwind base; @tailwind components; @tailwind utilities;
-html { font-size: 15px; } html, body { overflow-x: clip; }
+html { font-size: 16px; } html, body { overflow-x: clip; }
 body { @apply bg-cream text-navy-900 antialiased; font-family: var(--font-body), system-ui, sans-serif; line-height: 1.6; }
 h1,h2,h3 { @apply font-serif text-navy-900; letter-spacing: -0.01em; line-height: 1.2; }
 h1 { font-weight: 700; } h2 { font-weight: 700; } h3 { font-weight: 700; }
 a { text-underline-offset: 3px; }
 :focus-visible { outline: 4px solid #2A4D78; outline-offset: 3px; }
 @layer components {
-  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 min-h-[44px] text-base font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer text-center; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 min-h-[48px] text-base font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer text-center; }
   .btn-primary { @apply btn bg-navy-800 text-white hover:bg-navy-900; }
   .btn-gold { @apply btn bg-saffron-600 text-white hover:bg-saffron-700; }
   .btn-outline { @apply btn bg-white text-navy-800 border-2 border-navy-800 hover:bg-navy-50; }
-  .btn-sm { @apply min-h-[38px] px-4 text-sm; }
+  .btn-sm { @apply min-h-[42px] px-4 text-sm; }
   .btn-danger { @apply btn bg-coral-600 text-white; }
   .input { @apply w-full min-h-[52px] rounded-lg border-2 border-slate-500 bg-white px-4 text-base text-navy-900 placeholder:text-slate-500 focus:border-navy-700; }
   textarea.input { @apply py-3; }

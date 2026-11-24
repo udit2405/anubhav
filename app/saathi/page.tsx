@@ -28,7 +28,7 @@ export default function Saathi() {
           <h1 className="mt-5 text-4xl sm:text-5xl xl:text-6xl font-bold !text-white leading-[1.08]">Someone you can trust, whenever you need a hand.</h1>
           <div className="mt-5 h-1 w-20 bg-gold-500 rounded" aria-hidden />
           <p className="mt-5 text-lg sm:text-xl text-navy-100 leading-relaxed max-w-xl">Verified young helpers to take you to the hospital and back, run errands, teach you your phone, or simply keep you company. Book in two minutes, even for your parents in another city.</p>
-          <div className="mt-8 flex flex-wrap gap-4"><Link href="/saathi/book/" className="btn-gold !text-base !min-h-[46px] !px-6">Book a helper</Link><Link href="/saathi/helper/" className="btn border-2 border-white/70 text-white hover:bg-white hover:text-navy-900">I want to be a helper</Link></div>
+          <div className="mt-8 flex flex-wrap gap-4"><Link href="/saathi/book/" className="btn-gold !text-lg !min-h-[52px] !px-7">Book a helper</Link><Link href="/saathi/helper/" className="btn border-2 border-white/70 text-white hover:bg-white hover:text-navy-900">I want to be a helper</Link></div>
           <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 max-w-lg text-navy-100">{["Police-verified helpers", "Fixed prices, no haggling", "Family gets updates", "Booking in 2 minutes"].map((x) => <li key={x} className="flex items-center gap-2"><span className="h-6 w-6 shrink-0 rounded-full bg-gold-500 text-navy-900 text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}</ul>
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -63,7 +63,7 @@ export default function Saathi() {
 
       <section className="hero-pattern text-white"><div className="container-x py-16 text-center">
         <h2 className="text-3xl sm:text-5xl font-bold !text-white">Because no one should have to manage alone.</h2>
-        <div className="mt-8 flex flex-wrap justify-center gap-4"><Link href="/saathi/book/" className="btn-gold !text-base !min-h-[46px] !px-6">Book a helper</Link><Link href="/saathi/helper/" className="btn border-2 border-white/70 text-white hover:bg-white hover:text-navy-900">Become a helper</Link></div>
+        <div className="mt-8 flex flex-wrap justify-center gap-4"><Link href="/saathi/book/" className="btn-gold !text-lg !min-h-[52px] !px-7">Book a helper</Link><Link href="/saathi/helper/" className="btn border-2 border-white/70 text-white hover:bg-white hover:text-navy-900">Become a helper</Link></div>
       </div></section>
       <div className="container-x py-8"><p className="text-sm text-slate-600">Anubhav Saathi helpers are independent, verified part-time helpers, not doctors, nurses or medical staff. For emergencies call 112 or 108.</p><Disclaimer className="hidden" /></div>
       <MobileCta href="/saathi/book/" label="Book a helper" />

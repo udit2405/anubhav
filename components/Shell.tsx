@@ -22,13 +22,13 @@ export function Header() {
           <a href={telLink} className="font-bold underline-offset-4 hover:underline ml-auto sm:ml-0 whitespace-nowrap">📞 <span className="hidden sm:inline">Call us: </span>{prettyPhone()}</a>
         </div>
       </div>
-      <div className="container-x flex items-center justify-between gap-2 sm:gap-3 h-14 sm:h-16">
+      <div className="container-x flex items-center justify-between gap-2 sm:gap-3 h-16">
         <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0" aria-label="Anubhav home">
-          <span className="h-9 w-9 rounded-lg bg-navy-800 text-white flex items-center justify-center font-serif text-2xl font-bold">अ</span>
+          <span className="h-10 w-10 rounded-lg bg-navy-800 text-white flex items-center justify-center font-serif text-2xl font-bold">अ</span>
           <span className="leading-tight"><span className="block font-serif text-xl sm:text-2xl font-bold text-navy-900">Anubhav</span><span className="hidden sm:block text-xs text-slate-600">Experience doesn’t retire</span></span>
         </Link>
         <nav className="hidden xl:flex items-center gap-1" aria-label="Main">
-          {links.map(([h, l]) => <Link key={h} href={h} aria-current={active(h) ? "page" : undefined} className={`px-3 py-1.5 text-base font-bold border-b-4 whitespace-nowrap ${active(h) ? "border-saffron-600 text-navy-900" : "border-transparent text-navy-700 hover:border-navy-200"}`}>{l}</Link>)}
+          {links.map(([h, l]) => <Link key={h} href={h} aria-current={active(h) ? "page" : undefined} className={`px-3 py-2 text-base font-bold border-b-4 whitespace-nowrap ${active(h) ? "border-saffron-600 text-navy-900" : "border-transparent text-navy-700 hover:border-navy-200"}`}>{l}</Link>)}
         </nav>
         <div className="hidden xl:flex items-center gap-3"><LangSelect /></div>
         <div className="xl:hidden flex items-center gap-2 shrink-0"><span className="hidden sm:block"><LangSelect /></span><button className="btn-outline btn-sm !px-3 !min-h-[40px]" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}</button></div>

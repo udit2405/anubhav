@@ -145,8 +145,8 @@ export function Faq({ items }: { items: string[][] }) {
 export function MobileCta({ href = "/plan", label = "Free plan" }: { href?: string; label?: string }) {
   return (
     <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-navy-200 p-3 grid grid-cols-2 gap-3">
-      <a href={telLink} className="btn-primary !min-h-[46px] !px-2 whitespace-nowrap">📞 Call us</a>
-      <Link href={href} className="btn-gold !min-h-[46px] !px-2 whitespace-nowrap">{label}</Link>
+      <a href={telLink} className="btn-primary !min-h-[50px] !px-2 whitespace-nowrap">📞 Call us</a>
+      <Link href={href} className="btn-gold !min-h-[50px] !px-2 whitespace-nowrap">{label}</Link>
     </div>
   );
 }

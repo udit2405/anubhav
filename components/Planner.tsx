@@ -85,7 +85,7 @@ export function Planner() {
           <div className="mt-5 space-y-3">{E("consent") && <p role="alert" className="text-sm text-coral-600 font-bold">{E("consent")}</p>}
             <label className="flex gap-3 items-start"><input type="checkbox" className="h-5 w-5 mt-1 accent-[#0F1226]" checked={s.consent} onChange={(e) => set("consent", e.target.checked)} /><span>I agree that Anubhav and its registered partners may call, WhatsApp or email me about investment and real-estate guidance, even if my number is on DND. I can withdraw consent any time. I have read the <a className="underline font-bold" href={BASE + "/privacy/"} target="_blank">Privacy Policy</a>.</span></label>
             <label className="flex gap-3 items-start"><input type="checkbox" className="h-5 w-5 mt-1 accent-[#0F1226]" checked={s.consentWa} onChange={(e) => set("consentWa", e.target.checked)} /><span>Send my Money Map on WhatsApp too.</span></label></div>
-          <button type="button" className="btn-gold !text-base !min-h-[46px] w-full sm:w-auto mt-6" onClick={submit} disabled={busy}>{busy ? "Sending…" : "Send me my free plan"}</button>
+          <button type="button" className="btn-gold !text-lg !min-h-[52px] w-full sm:w-auto mt-6" onClick={submit} disabled={busy}>{busy ? "Sending…" : "Send me my free plan"}</button>
           <p className="mt-4 text-xs text-slate-500">{NOTICE}</p></div></div>)}
 
       {step < 3 && <div className="mt-10 flex flex-wrap gap-3 justify-between border-t-2 border-navy-900/10 pt-6"><button type="button" className="btn-outline" disabled={step === 0} onClick={() => setStep(step - 1)}>← Back</button><button type="button" className="btn-gold" onClick={next}>{step === 2 ? "See my Money Map →" : "Next →"}</button></div>}
