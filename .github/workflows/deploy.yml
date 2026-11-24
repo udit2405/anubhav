@@ -32,6 +32,7 @@ jobs:
           NEXT_PUBLIC_SITE_URL: ${{ vars.CUSTOM_DOMAIN != '' && format('https://{0}', vars.CUSTOM_DOMAIN) || 'https://udit2405.github.io/anubhav' }}
           # Set these under Settings → Secrets and variables → Actions → Variables
           NEXT_PUBLIC_LEADS_URL: ${{ vars.LEADS_URL }}
+          NEXT_PUBLIC_PHONE: ${{ vars.PHONE }}
           NEXT_PUBLIC_WHATSAPP: ${{ vars.WHATSAPP }}
           NEXT_PUBLIC_CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
       - run: touch out/.nojekyll

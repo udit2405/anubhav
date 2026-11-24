@@ -6,8 +6,8 @@ export const metadata: Metadata = {
 };
 export default function Page() {
   return (<>
-    <section className="bg-gold-500 border-b-2 border-navy-900"><div className="container-x py-12 sm:py-16"><p className="eyebrow">Free · 2 minutes · No obligation</p>
-      <h1 className="mt-4 text-4xl sm:text-5xl font-bold max-w-3xl">Where should your retirement savings work?</h1><p className="mt-3 text-xl text-navy-800 max-w-2xl">Get your personal Retirement Money Map: a clear picture of safe income, real estate and other options that fit you.</p></div></section>
+    <section className="bg-white border-b border-navy-200"><div className="container-x py-10 sm:py-14"><p className="eyebrow">Free · 2 minutes · No obligation</p>
+      <h1 className="mt-3 text-4xl sm:text-5xl max-w-3xl">Where should your retirement savings work?</h1><p className="mt-3 text-xl text-slate-700 max-w-2xl">Get your personal Retirement Money Map: a clear picture of safe income, real estate and other options that fit you.</p></div></section>
     <div className="container-x py-10 max-w-4xl"><Planner /></div>
   </>);
 }

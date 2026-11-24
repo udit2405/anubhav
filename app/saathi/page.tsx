@@ -38,7 +38,7 @@ export default function Saathi() {
       </div></section>
 
       <section className="section container-x" aria-labelledby="svc">
-        <Reveal><p className="text-gold-700 font-semibold uppercase tracking-wide text-sm">Our services</p><h2 id="svc" className="mt-2 text-3xl sm:text-4xl font-bold">What do you need help with?</h2><p className="mt-3 text-lg text-slate-600 max-w-2xl">Tap a service to see exactly what is included and what it costs.</p></Reveal>
+        <Reveal><p className="text-saffron-600 font-semibold uppercase tracking-wide text-sm">Our services</p><h2 id="svc" className="mt-2 text-3xl sm:text-4xl font-bold">What do you need help with?</h2><p className="mt-3 text-lg text-slate-600 max-w-2xl">Tap a service to see exactly what is included and what it costs.</p></Reveal>
         <div className="mt-10"><ServiceExplorer /></div>
       </section>
 
@@ -48,8 +48,8 @@ export default function Saathi() {
       </div></section>
 
       <section className="section container-x" aria-labelledby="safe">
-        <Reveal><p className="text-gold-700 font-semibold uppercase tracking-wide text-sm">Safety first</p><h2 id="safe" className="mt-2 text-3xl sm:text-4xl font-bold max-w-3xl">Your trust is everything. Here is how we protect it.</h2></Reveal>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{SAFETY.map(([i, h, d], k) => <Reveal key={h} delay={k * 60}><div className="card p-6 h-full hover:-translate-y-1 hover:shadow-hard-lg hover:border-navy-900 transition-all"><span className="text-3xl" aria-hidden>{i}</span><h3 className="mt-3 text-xl font-bold">{h}</h3><p className="mt-2 text-slate-700">{d}</p></div></Reveal>)}</div>
+        <Reveal><p className="text-saffron-600 font-semibold uppercase tracking-wide text-sm">Safety first</p><h2 id="safe" className="mt-2 text-3xl sm:text-4xl font-bold max-w-3xl">Your trust is everything. Here is how we protect it.</h2></Reveal>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{SAFETY.map(([i, h, d], k) => <Reveal key={h} delay={k * 60}><div className="card p-6 h-full hover:shadow-hard-lg hover:border-navy-900 transition-all"><span className="text-3xl" aria-hidden>{i}</span><h3 className="mt-3 text-xl font-bold">{h}</h3><p className="mt-2 text-slate-700">{d}</p></div></Reveal>)}</div>
       </section>
 
       <section className="section bg-navy-900 text-white" id="earn"><div className="container-x">

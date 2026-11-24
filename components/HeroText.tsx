@@ -13,7 +13,7 @@ export function HeroText() {
       <p className="mt-6 text-xl text-slate-700 leading-relaxed max-w-xl">{t("h2.sub")}</p>
       <div className="mt-8 flex flex-wrap gap-4"><Link href="/plan" className="btn-gold !text-lg !min-h-[60px] !px-8">{t("h2.cta1")} →</Link><Link href="/register" className="btn-outline !text-lg !min-h-[60px] !px-8">{t("h2.cta2")}</Link></div>
       <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-slate-700 font-medium">
-        {["Free, no obligation", "Takes 2 minutes", "Your number stays private"].map((x) => <li key={x} className="flex items-center gap-2"><span className="h-6 w-6 rounded-full bg-mint-500 text-white text-sm flex items-center justify-center border-2 border-navy-900" aria-hidden>✓</span>{x}</li>)}
+        {["Free, no obligation", "Takes 2 minutes", "Your number stays private"].map((x) => <li key={x} className="flex items-center gap-2"><span className="h-6 w-6 rounded-full bg-mint-500 text-white text-sm flex items-center justify-center border border-navy-300" aria-hidden>✓</span>{x}</li>)}
       </ul>
     </div>
   );

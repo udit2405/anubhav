@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { CATEGORIES } from "@/lib/data";
+import { telLink } from "@/lib/contact";
 
 /* ---------- Scroll reveal (respects reduced motion via CSS) */
 export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
@@ -72,7 +73,7 @@ export function FieldExplorer() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3" role="tablist" aria-label="Fields">
         {CATEGORIES.map((x) => (
           <button key={x.id} role="tab" aria-selected={sel === x.id} onClick={() => setSel(x.id)}
-            className={`text-left rounded-xl border-2 p-4 min-h-[92px] transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-hard -translate-y-0.5" : "border-slate-200 bg-white hover:border-navy-300"}`}>
+            className={`text-left rounded-xl border-2 p-4 min-h-[92px] transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-hard " : "border-slate-200 bg-white hover:border-navy-300"}`}>
             <span className="text-2xl" aria-hidden>{x.icon}</span><span className="block mt-1 font-semibold leading-snug">{x.name}</span>
           </button>
         ))}
@@ -114,7 +115,7 @@ export function StepGuide({ steps = STEPS, cta = { href: "/register", label: "St
       </ol>
       <div key={i} className="fade-in mt-8 card p-7 sm:p-9 grid sm:grid-cols-[auto_1fr_auto] gap-6 items-center">
         <span className="text-5xl" aria-hidden>{s.icon}</span>
-        <div><p className="text-sm font-semibold text-gold-700 uppercase tracking-wide">Step {i + 1} · {s.t}</p><h3 className="text-2xl font-bold mt-1">{s.h}</h3><p className="text-lg text-slate-700 mt-2">{s.d}</p></div>
+        <div><p className="text-sm font-semibold text-saffron-600 uppercase tracking-wide">Step {i + 1} · {s.t}</p><h3 className="text-2xl font-bold mt-1">{s.h}</h3><p className="text-lg text-slate-700 mt-2">{s.d}</p></div>
         <div className="flex sm:flex-col gap-2">
           <button className="btn-outline btn-sm" onClick={() => setI(Math.max(0, i - 1))} disabled={i === 0}>← Back</button>
           {i < steps.length - 1 ? <button className="btn-primary btn-sm" onClick={() => setI(i + 1)}>Next →</button> : <Link href={cta.href} className="btn-gold btn-sm">{cta.label}</Link>}
@@ -140,13 +141,12 @@ export function Faq({ items }: { items: string[][] }) {
   );
 }
 
-/* ---------- Sticky mobile CTA */
-export function MobileCta({ href = "/register", label = "List Your Expertise — Free" }: { href?: string; label?: string }) {
-  const [show, setShow] = useState(false);
-  useEffect(() => { const h = () => setShow(window.scrollY > 600); h(); window.addEventListener("scroll", h, { passive: true }); return () => window.removeEventListener("scroll", h); }, []);
+/* ---------- Sticky mobile bar: call + main action */
+export function MobileCta({ href = "/plan", label = "Free plan" }: { href?: string; label?: string }) {
   return (
-    <div className={`lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-200 p-3 transition-transform duration-300 ${show ? "translate-y-0" : "translate-y-full"}`}>
-      <Link href={href} className="btn-gold w-full">{label}</Link>
+    <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-navy-200 p-3 grid grid-cols-2 gap-3">
+      <a href={telLink} className="btn-primary !min-h-[56px] !px-2 whitespace-nowrap">📞 Call us</a>
+      <Link href={href} className="btn-gold !min-h-[56px] !px-2 whitespace-nowrap">{label}</Link>
     </div>
   );
 }

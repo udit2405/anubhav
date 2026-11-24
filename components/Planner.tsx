@@ -34,7 +34,7 @@ export function Planner() {
 
   if (sent) return (
     <div id="pl-top" className="max-w-2xl mx-auto text-center space-y-6 py-4" role="status">
-      <div className="mx-auto h-20 w-20 rounded-full bg-mint-500 border-2 border-navy-900 shadow-hard flex items-center justify-center text-4xl text-white">✓</div>
+      <div className="mx-auto h-20 w-20 rounded-full bg-mint-500 border border-navy-300 shadow-hard flex items-center justify-center text-4xl text-white">✓</div>
       <h2 className="text-3xl sm:text-4xl font-bold">Thank you, {s.name.split(" ")[0]}!</h2>
       <p className="text-xl text-slate-700">{LEADS_URL ? "Your Money Map request has reached our team." : "One last tap sends your request to our team."} A retirement specialist will call you on <strong>{s.phone}</strong> in the <strong>{s.callTime.toLowerCase()}</strong> to walk you through it. No cost, no obligation.</p>
       <SendButtons subject={`Retirement plan lead: ${s.name}`} body={body} filename="anubhav-plan" />
@@ -44,7 +44,7 @@ export function Planner() {
   return (
     <div id="pl-top" className="scroll-mt-24">
       <nav aria-label="Progress" className="mb-8"><ol className="grid grid-cols-4 gap-2">{STEPS.map((l, i) => (
-        <li key={l}><div className={`h-3 rounded-full border-2 border-navy-900 transition-colors ${i <= step ? "bg-gold-500" : "bg-white"}`} /><span className={`mt-2 block text-xs sm:text-sm font-bold ${i === step ? "text-navy-900" : "text-slate-500"}`}>{i + 1}. {l}</span></li>))}</ol></nav>
+        <li key={l}><div className={`h-3 rounded-full border border-navy-300 transition-colors ${i <= step ? "bg-gold-500" : "bg-white"}`} /><span className={`mt-2 block text-xs sm:text-sm font-bold ${i === step ? "text-navy-900" : "text-slate-500"}`}>{i + 1}. {l}</span></li>))}</ol></nav>
 
       {step === 0 && (<div className="space-y-6"><div><h2 className="text-3xl font-bold">Let’s start with you</h2><p className="mt-1 text-lg text-slate-600">Three quick questions. It takes about 2 minutes.</p></div>
         <div className="grid sm:grid-cols-2 gap-6">
@@ -61,16 +61,16 @@ export function Planner() {
       {step === 2 && (<div className="space-y-7"><div><h2 className="text-3xl font-bold">What matters most to you?</h2><p className="mt-1 text-lg text-slate-600">Choose as many as you like.</p></div>
         <div><p className="label">Your goals <span className="text-coral-600">*</span></p><CheckGroup legend="Goals" options={GOALS} value={s.goals} onChange={(v) => set("goals", v)} />{E("goals") && <p role="alert" className="text-sm text-coral-600 font-bold mt-2">{E("goals")}</p>}</div>
         <div><p className="label">Areas you would like to explore <span className="text-coral-600">*</span></p><CheckGroup legend="Interests" options={INTERESTS} value={s.interests} onChange={(v) => set("interests", v)} />{E("interests") && <p role="alert" className="text-sm text-coral-600 font-bold mt-2">{E("interests")}</p>}</div>
-        <div><p className="label">How do you feel about risk?</p><div className="grid sm:grid-cols-3 gap-3">{RISK.map(([k, h, d]) => <button type="button" key={k} onClick={() => set("risk", k)} aria-pressed={s.risk === k} className={`text-left rounded-2xl border-2 border-navy-900 p-4 transition-all ${s.risk === k ? "bg-gold-500 shadow-hard -translate-y-0.5" : "bg-white hover:bg-gold-50"}`}><span className="block font-bold text-lg">{h}</span><span className="text-sm text-slate-700">{d}</span></button>)}</div></div>
+        <div><p className="label">How do you feel about risk?</p><div className="grid sm:grid-cols-3 gap-3">{RISK.map(([k, h, d]) => <button type="button" key={k} onClick={() => set("risk", k)} aria-pressed={s.risk === k} className={`text-left rounded-2xl border border-navy-300 p-4 transition-all ${s.risk === k ? "bg-gold-500 shadow-hard " : "bg-white hover:bg-gold-50"}`}><span className="block font-bold text-lg">{h}</span><span className={`text-base ${s.risk === k ? "text-navy-100" : "text-slate-700"}`}>{d}</span></button>)}</div></div>
         <div><p className="label">When do you plan to decide? <span className="text-coral-600">*</span></p><div className="flex flex-wrap gap-3">{TIMELINES.map((t) => <Pill key={t} on={s.timeline === t} onClick={() => set("timeline", t)}>{t}</Pill>)}</div>{E("timeline") && <p role="alert" className="text-sm text-coral-600 font-bold mt-2">{E("timeline")}</p>}</div></div>)}
 
       {step === 3 && (<div className="space-y-8">
         <div><p className="eyebrow">Your result</p><h2 className="mt-3 text-3xl sm:text-4xl font-bold">{s.name.split(" ")[0]}’s Retirement Money Map</h2>
           <p className="mt-2 text-lg text-slate-700">A starting point for a <strong>{lakhs(CORPUS_BANDS[s.corpusIdx].mid)}</strong> corpus, a <strong>{RISK.find((r) => r[0] === s.risk)![1].toLowerCase()}</strong> approach, age {s.age}. It is illustrative. A specialist will tailor it to you.</p></div>
         <div className="card p-5 sm:p-7">
-          <div className="flex h-12 rounded-xl overflow-hidden border-2 border-navy-900" role="img" aria-label="Allocation bar">{map.map((b) => <div key={b.key} style={{ width: `${b.pct}%`, background: b.color }} className="transition-all duration-500" title={`${b.name} ${b.pct}%`} />)}</div>
+          <div className="flex h-12 rounded-xl overflow-hidden border border-navy-300" role="img" aria-label="Allocation bar">{map.map((b) => <div key={b.key} style={{ width: `${b.pct}%`, background: b.color }} className="transition-all duration-500" title={`${b.name} ${b.pct}%`} />)}</div>
           <ul className="mt-6 grid md:grid-cols-2 gap-4">{map.map((b) => (
-            <li key={b.key} className="rounded-xl border-2 border-navy-900/15 p-4"><div className="flex items-baseline justify-between gap-3"><span className="flex items-center gap-2 font-bold text-lg"><span className="h-4 w-4 rounded border border-navy-900" style={{ background: b.color }} />{b.name}</span><span className="font-serif text-2xl font-bold tabular-nums">{b.pct}%</span></div>
+            <li key={b.key} className="rounded-xl border border-navy-200 p-4"><div className="flex items-baseline justify-between gap-3"><span className="flex items-center gap-2 font-bold text-lg"><span className="h-4 w-4 rounded border border-navy-900" style={{ background: b.color }} />{b.name}</span><span className="font-serif text-2xl font-bold tabular-nums">{b.pct}%</span></div>
               <p className="text-sm text-slate-600 mt-1">≈ {lakhs(b.amount)} · {b.blurb}</p><p className="text-sm mt-2"><span className="font-bold">Ask your specialist:</span> {b.ask}</p></li>))}</ul>
           <p className="mt-5 text-xs text-slate-500">Illustrative allocation based on your answers, not a recommendation of any product. No returns are promised or implied.</p>
         </div>
@@ -93,5 +93,5 @@ export function Planner() {
   );
 }
 function Pill({ on, onClick, children, big }: { on: boolean; onClick: () => void; children: React.ReactNode; big?: boolean }) {
-  return <button type="button" aria-pressed={on} onClick={onClick} className={`rounded-full border-2 border-navy-900 font-bold transition-all ${big ? "px-5 min-h-[60px] text-lg" : "px-5 min-h-[48px]"} ${on ? "bg-gold-500 shadow-hard-sm -translate-y-0.5" : "bg-white hover:bg-gold-50"}`}>{on ? "✓ " : ""}{children}</button>;
+  return <button type="button" aria-pressed={on} onClick={onClick} className={`rounded-full border border-navy-300 font-bold transition-all ${big ? "px-5 min-h-[60px] text-lg" : "px-5 min-h-[48px]"} ${on ? "bg-gold-500 shadow-hard-sm " : "bg-white hover:bg-gold-50"}`}>{on ? "✓ " : ""}{children}</button>;
 }

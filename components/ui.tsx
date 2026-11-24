@@ -15,7 +15,7 @@ export function Avatar({ p, size = 64 }: { p: Pick<Professional, "name" | "photo
 }
 
 export function VerifiedBadge({ small }: { small?: boolean }) {
-  return <span className={`inline-flex items-center gap-1 rounded-full bg-gold-50 border border-gold-300 text-gold-700 font-semibold ${small ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"}`} title="Retirement / experience documents checked by Anubhav"><span aria-hidden>✔</span> Verified</span>;
+  return <span className={`inline-flex items-center gap-1 rounded-full bg-gold-50 border border-gold-300 text-saffron-600 font-semibold ${small ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"}`} title="Retirement / experience documents checked by Anubhav"><span aria-hidden>✔</span> Verified</span>;
 }
 export function SampleBadge() {
   return <span className="inline-flex rounded-full bg-slate-100 border border-slate-300 text-slate-700 px-2 py-0.5 text-xs font-medium" title="Illustrative profile for demonstration only. Not a real, verified person.">Sample profile</span>;
@@ -70,7 +70,7 @@ export function Empty({ title, children }: { title: string; children?: ReactNode
   return <div className="rounded-xl border border-dashed border-slate-300 p-10 text-center"><p className="text-xl font-serif font-bold text-navy-900">{title}</p><div className="mt-2 text-slate-600">{children}</div></div>;
 }
 export function PageHeader({ title, sub }: { title: string; sub?: string }) {
-  return <div className="bg-navy-900 text-white"><div className="container-x py-12"><h1 className="!text-white text-3xl sm:text-4xl font-bold">{title}</h1>{sub && <p className="mt-3 text-lg text-navy-200 max-w-3xl">{sub}</p>}</div></div>;
+  return <div className="bg-navy-50 border-b border-navy-200"><div className="container-x py-10 sm:py-12"><h1 className="text-3xl sm:text-4xl">{title}</h1>{sub && <p className="mt-3 text-xl text-slate-700 max-w-3xl">{sub}</p>}</div></div>;
 }
 export function Disclaimer({ className = "" }: { className?: string }) {
   return <p className={`text-sm text-slate-600 ${className}`}>Listed professionals are independent individuals. They do not represent, and are not endorsed by, any government department, bank, PSU or organisation they previously served. Profile details are self-declared unless marked “Verified”.</p>;

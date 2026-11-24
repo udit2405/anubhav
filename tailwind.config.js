@@ -4,19 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // "navy" = ink (deep blue-black). "gold" = marigold. Names kept so existing components re-theme automatically.
-        navy: { 50: "#F1F2FA", 100: "#E3E5F5", 200: "#C5C9E8", 300: "#9AA1D4", 500: "#5560A8", 600: "#3A4180", 700: "#262B57", 800: "#181C3A", 900: "#0F1226" },
-        gold: { 50: "#FFF7E0", 100: "#FFEBB0", 300: "#FFD166", 500: "#FFB400", 600: "#E09A00", 700: "#8A5600" },
-        cream: "#FBF6EC",
-        coral: { 300: "#FFB3A6", 500: "#FF6B57", 600: "#E0503D" },
-        mint: { 100: "#CFF3E6", 300: "#7FDCBB", 500: "#17A878", 700: "#0B6B4C" },
-        sky: { 100: "#D6ECFF", 300: "#8FCBFF" },
+        // "navy" = trustworthy deep blue. "gold" = soft warm highlight. "saffron" = the main call-to-action colour.
+        navy: { 50: "#F3F7FB", 100: "#E4ECF5", 200: "#C9D7E8", 300: "#9FB6D1", 500: "#4F7BAE", 600: "#356093", 700: "#2A4D78", 800: "#1F3B5C", 900: "#17283F" },
+        gold: { 50: "#FFF9EA", 100: "#FBEFCC", 300: "#EBCB7A", 500: "#F0C555", 600: "#D9A82E", 700: "#7A5410" },
+        saffron: { 500: "#C4640A", 600: "#B85C00", 700: "#9A4C00" },
+        cream: "#FFFDF8",
+        coral: { 300: "#F4DCD2", 500: "#C2523A", 600: "#A63F2A" },
+        mint: { 100: "#E6F4EC", 300: "#CBE8D8", 500: "#2F7D5B", 700: "#1F5C42" },
+        sky: { 100: "#E8F1FA", 300: "#BCD6EE" },
       },
       fontFamily: {
         sans: ["var(--font-body)", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Noto Sans Devanagari", "sans-serif"],
-        serif: ["var(--font-display)", "system-ui", "-apple-system", "Segoe UI", "Noto Sans Devanagari", "sans-serif"],
+        serif: ["var(--font-display)", "Georgia", "Noto Serif Devanagari", "serif"],
       },
-      boxShadow: { hard: "4px 4px 0 0 #0F1226", "hard-lg": "7px 7px 0 0 #0F1226", "hard-sm": "3px 3px 0 0 #0F1226" },
+      boxShadow: { hard: "0 1px 3px rgba(23,40,63,.14)", "hard-lg": "0 6px 16px rgba(23,40,63,.14)", "hard-sm": "0 1px 2px rgba(23,40,63,.12)" },
     },
   },
   plugins: [],

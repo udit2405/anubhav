@@ -18,15 +18,15 @@ export function MarketExplorer() {
       <div className="grid grid-cols-2 lg:grid-cols-1 gap-3" role="tablist" aria-label="Where savings can work">
         {MARKETS.map((x) => (
           <button key={x.id} role="tab" aria-selected={sel === x.id} onClick={() => setSel(x.id)}
-            className={`flex items-center gap-3 text-left rounded-2xl border-2 border-navy-900 p-4 min-h-[68px] transition-all ${sel === x.id ? `${x.color} shadow-hard -translate-y-0.5` : "bg-white hover:bg-gold-50"}`}>
+            className={`flex items-center gap-3 text-left rounded-2xl border border-navy-300 p-4 min-h-[68px] transition-all ${sel === x.id ? `${x.color} shadow-hard ` : "bg-white hover:bg-gold-50"}`}>
             <span className="text-3xl" aria-hidden>{x.icon}</span><span className="font-bold text-lg leading-tight">{x.name}</span></button>))}
       </div>
       <div key={sel} role="tabpanel" className={`fade-in card p-6 sm:p-8 ${m.color}`}>
         <div className="flex items-center gap-3"><span className="text-5xl" aria-hidden>{m.icon}</span><h3 className="text-3xl font-bold">{m.name}</h3></div>
         <p className="mt-3 text-lg text-navy-800">{m.what}</p>
         <div className="mt-6 grid md:grid-cols-2 gap-4">
-          <div className="rounded-xl bg-white border-2 border-navy-900 p-4"><h4 className="font-bold">Why people choose it</h4><ul className="mt-2 space-y-1.5">{m.good.map((g) => <li key={g} className="flex gap-2"><span className="text-mint-700 font-bold" aria-hidden>✓</span>{g}</li>)}</ul></div>
-          <div className="rounded-xl bg-white border-2 border-navy-900 p-4"><h4 className="font-bold">Watch out for</h4><ul className="mt-2 space-y-1.5">{m.watch.map((g) => <li key={g} className="flex gap-2"><span className="text-coral-600 font-bold" aria-hidden>!</span>{g}</li>)}</ul></div>
+          <div className="rounded-xl bg-white border border-navy-300 p-4"><h4 className="font-bold">Why people choose it</h4><ul className="mt-2 space-y-1.5">{m.good.map((g) => <li key={g} className="flex gap-2"><span className="text-mint-700 font-bold" aria-hidden>✓</span>{g}</li>)}</ul></div>
+          <div className="rounded-xl bg-white border border-navy-300 p-4"><h4 className="font-bold">Watch out for</h4><ul className="mt-2 space-y-1.5">{m.watch.map((g) => <li key={g} className="flex gap-2"><span className="text-coral-600 font-bold" aria-hidden>!</span>{g}</li>)}</ul></div>
         </div>
         <Link href="/plan" className="btn-primary mt-6">Talk to a specialist about {m.name.toLowerCase()}</Link>
         <p className="mt-3 text-xs text-navy-700">General education, not advice. Returns are not guaranteed.</p>

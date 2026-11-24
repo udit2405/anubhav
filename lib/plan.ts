@@ -12,12 +12,12 @@ export const TIMELINES = ["Within this month", "In the next 3 months", "In 3–6
 
 export interface Bucket { key: string; name: string; pct: number; color: string; blurb: string; ask: string }
 const META: Record<string, Omit<Bucket, "pct" | "key">> = {
-  fixed: { name: "Safe income (FD, SCSS, bonds)", color: "#0B6B4C", blurb: "Government-backed and bank instruments for steady, predictable income.", ask: "Which options suit my tax slab, and how do I ladder maturities?" },
-  property: { name: "Real estate", color: "#FF6B57", blurb: "Rental property, plots, or senior-living homes for income and long-term value.", ask: "Is the project RERA-registered, and what is the realistic net rental yield?" },
-  funds: { name: "Mutual funds", color: "#5560A8", blurb: "Diversified market investments for long-term growth, with monthly withdrawal options.", ask: "How should I use SWP so withdrawals are tax-efficient?" },
-  gold: { name: "Gold", color: "#FFB400", blurb: "A small anchor against inflation and uncertainty (sovereign gold bonds, ETFs).", ask: "Which form of gold is cheapest and safest to hold?" },
-  cover: { name: "Health cover & annuity", color: "#17A878", blurb: "A medical cushion and optional guaranteed lifetime income.", ask: "Is my health cover enough, and is an annuity worth it for me?" },
-  liquid: { name: "Emergency reserve", color: "#8FCBFF", blurb: "Easily accessible money for 12 months of expenses and surprises.", ask: "Where should I park this so it earns something yet stays accessible?" },
+  fixed: { name: "Safe income (FD, SCSS, bonds)", color: "#2F7D5B", blurb: "Government-backed and bank instruments for steady, predictable income.", ask: "Which options suit my tax slab, and how do I ladder maturities?" },
+  property: { name: "Real estate", color: "#C2523A", blurb: "Rental property, plots, or senior-living homes for income and long-term value.", ask: "Is the project RERA-registered, and what is the realistic net rental yield?" },
+  funds: { name: "Mutual funds", color: "#2A4D78", blurb: "Diversified market investments for long-term growth, with monthly withdrawal options.", ask: "How should I use SWP so withdrawals are tax-efficient?" },
+  gold: { name: "Gold", color: "#D9A82E", blurb: "A small anchor against inflation and uncertainty (sovereign gold bonds, ETFs).", ask: "Which form of gold is cheapest and safest to hold?" },
+  cover: { name: "Health cover & annuity", color: "#5FA88A", blurb: "A medical cushion and optional guaranteed lifetime income.", ask: "Is my health cover enough, and is an annuity worth it for me?" },
+  liquid: { name: "Emergency reserve", color: "#8FB6DA", blurb: "Easily accessible money for 12 months of expenses and surprises.", ask: "Where should I park this so it earns something yet stays accessible?" },
 };
 export function buildMap(input: { age: string; risk: string; goals: string[]; interests: string[]; corpusIdx: number }) {
   const base: Record<string, Record<string, number>> = {
