@@ -38,7 +38,7 @@ export default function Home() {
         <div className="container-x py-12 sm:py-16 grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-14 items-start">
           <div>
             <p className="eyebrow">For retired professionals</p>
-            <h1 className="mt-3 text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.12]">Make your retirement savings and your experience work for you.</h1>
+            <h1 className="mt-3 text-4xl sm:text-5xl leading-[1.15]">Make your retirement savings and your experience work for you.</h1>
             <p className="mt-6 text-xl sm:text-2xl text-slate-700 leading-relaxed">Free, no-pressure guidance on property, safe income and part-time work. Explained in simple language, in your own language.</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/plan" className="btn-gold !text-xl !min-h-[64px] !px-9">Get my free retirement plan</Link>
