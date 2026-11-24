@@ -5,7 +5,6 @@ import { prettyPhone, telLink } from "@/lib/contact";
 
 const ways = [
   { icon: "🎓", color: "bg-mint-100", h: "Share your expertise", d: "List yourself for free. Advise businesses, mentor young people or guide a neighbour. Choose your own fees and hours.", cta: "List my expertise", href: "/register" },
-  { icon: "🔎", color: "bg-sky-100", h: "Hire an expert", d: "Find a retired engineer, banker, officer, doctor or teacher with decades of real experience. Free guidance or paid work, you choose.", cta: "Hire an expert", href: "/hire" },
   { icon: "🤝", color: "bg-gold-100", h: "Help at home", d: "Verified young helpers for hospital visits, errands and phone lessons. Families can book for their parents from anywhere.", cta: "See Anubhav Saathi", href: "/saathi" },
 ];
 const pricing = [
@@ -17,12 +16,12 @@ const steps = [
   ["Fill a simple form", "Tell us about your career and what you can help with. About 10 minutes."],
   ["Send it, or ask for a call", "Send it on WhatsApp or email in one tap, or request a call and we will fill it with you."],
   ["We publish your profile", "Our team checks it and publishes it, usually within 2 working days. Send your retirement proof for a Verified badge."],
-  ["Get enquiries, you decide", "People ask for you through Anubhav. You choose whether to reply, and whether it is free or paid."],
+  ["Be found, and you decide", "When people look for your skills, they find your profile and ask for you through Anubhav. You choose whether to reply, and whether it is free or paid."],
 ];
 const safety = [
   ["Your phone number stays private", "It is never shown on the website. People write to Anubhav first, and we connect you only if you agree."],
   ["Free to join, always", "We never charge a retired professional to register or to be listed."],
-  ["Verified badge", "Send your retirement proof and we check it. Verified profiles are trusted more by clients."],
+  ["Verified badge", "Send your retirement proof and we check it. Verified profiles are trusted more."],
   ["We never ask for OTP, PIN or money", "If anyone says they are from Anubhav and asks, please hang up and call us."],
 ];
 const faq = [
@@ -31,7 +30,7 @@ const faq = [
   ["Who can see my phone number?", "Nobody on the website. Clients write to the Anubhav team and we connect you only when you agree."],
   ["I was not in government service. Can I join?", "Yes. Anyone with real professional experience can register: engineers, bankers, doctors, teachers, officers, scientists, accountants and more."],
   ["I do not use computers much. Can I still list myself?", "Yes. Request a call back, or call us, and we will fill in the form with you over the phone."],
-  ["How do I hire an expert?", "Browse experts or post what you need. Send an enquiry through Anubhav, and we connect you. Many experts offer a free first conversation. Others charge fees that are shown on their profile."],
+  ["Will people really contact me?", "We are building Anubhav now, and our first experts are the founding members. Your profile is published for free, and people who need your skills can ask for you through Anubhav. You always choose whether to reply."],
 ];
 
 export default function Home() {
@@ -46,7 +45,7 @@ export default function Home() {
             <p className="mt-4 text-xl text-slate-700 leading-relaxed">List yourself for free. Advise businesses, mentor young people or help your community, free or paid, on your own terms.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link>
-              <Link href="/hire" className="btn-outline !text-lg !min-h-[52px] !px-7">Hire an expert</Link>
+              <a href="#how" className="btn-outline !text-lg !min-h-[52px] !px-7">How it works</a>
             </div>
             <ul className="mt-6 space-y-2.5 text-lg">
               {["Free to list, always", "Charge for your time, or help for free", "Your phone number stays private"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-mint-500 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}
@@ -59,8 +58,8 @@ export default function Home() {
       {/* THREE WAYS */}
       <section className="section container-x" aria-labelledby="ways">
         <h2 id="ways" className="text-3xl sm:text-4xl max-w-3xl">What you can do on Anubhav</h2>
-        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Use one, or all three.</p>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Use one, or both.</p>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {ways.map((x) => (
             <div key={x.h} className={`card p-7 flex flex-col ${x.color}`}>
               <span className="text-5xl" aria-hidden>{x.icon}</span>
@@ -75,7 +74,7 @@ export default function Home() {
       {/* FREE OR PAID */}
       <section className="section bg-white border-y border-navy-200" aria-labelledby="fp"><div className="container-x">
         <h2 id="fp" className="text-3xl sm:text-4xl max-w-3xl">Free or paid. You choose.</h2>
-        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Every expert decides how they want to help. Clients can filter for free or paid.</p>
+        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Every expert decides how they want to help, and can change it any time.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {pricing.map((x) => <div key={x.h} className={`card p-7 ${x.tag}`}><span className="text-4xl" aria-hidden>{x.icon}</span><h3 className="mt-3 text-2xl">{x.h}</h3><p className="mt-2 text-lg text-slate-800">{x.d}</p></div>)}
         </div>
@@ -98,17 +97,6 @@ export default function Home() {
           ))}
         </ol>
         <div className="mt-10"><Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link></div>
-      </div></section>
-
-      {/* HIRE */}
-      <section className="section container-x" aria-labelledby="hire"><div className="card bg-sky-100 p-7 sm:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
-        <div>
-          <p className="eyebrow">For businesses, start-ups and families</p>
-          <h2 id="hire" className="mt-2 text-3xl sm:text-4xl">Looking for an expert?</h2>
-          <p className="mt-3 text-xl text-slate-800">Find people who have done the work for 25 to 40 years. Browse by department, skill and city, or post what you need and see the best matches. Free guidance from some, affordable fees from others.</p>
-          <div className="mt-6 flex flex-wrap gap-3"><Link href="/hire" className="btn-primary !text-lg !min-h-[52px] !px-7">Hire an expert</Link><Link href="/experts" className="btn-outline !text-lg !min-h-[52px] !px-7">Browse experts</Link></div>
-        </div>
-        <ul className="space-y-3 text-lg">{["Search or post a requirement", "See the best matches, with match percentage", "Contact through Anubhav, numbers stay private", "Free or paid, the profile shows it clearly"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-navy-800 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}</ul>
       </div></section>
 
       {/* SAATHI */}
