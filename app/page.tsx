@@ -41,8 +41,8 @@ export default function Home() {
             <h1 className="mt-3 text-4xl sm:text-5xl leading-[1.15]">Make your retirement savings and your experience work for you.</h1>
             <p className="mt-6 text-xl sm:text-2xl text-slate-700 leading-relaxed">Free, no-pressure guidance on property, safe income and part-time work. Explained in simple language, in your own language.</p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/plan" className="btn-gold !text-xl !min-h-[64px] !px-9">Get my free retirement plan</Link>
-              <a href={telLink} className="btn-outline !text-xl !min-h-[64px] !px-9">📞 Call {prettyPhone()}</a>
+              <Link href="/plan" className="btn-gold !text-base !min-h-[46px] !px-6">Get my free retirement plan</Link>
+              <a href={telLink} className="btn-outline !text-base !min-h-[46px] !px-6">📞 Call {prettyPhone()}</a>
             </div>
             <ul className="mt-8 space-y-3 text-xl">
               {["Completely free, with no obligation", "A friendly person calls you, at your time", "Your phone number is never shown or sold"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-1 h-7 w-7 shrink-0 rounded-full bg-mint-500 text-white text-lg flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}
@@ -84,7 +84,7 @@ export default function Home() {
               <div><h3 className="text-2xl">{h}</h3><p className="mt-2 text-lg text-slate-700">{d}</p></div></li>
           ))}
         </ol>
-        <div className="mt-10"><Link href="/plan" className="btn-gold !text-xl !min-h-[64px] !px-9">Start my free plan</Link></div>
+        <div className="mt-10"><Link href="/plan" className="btn-gold !text-base !min-h-[46px] !px-6">Start my free plan</Link></div>
       </section>
 
       {/* SAFETY */}
@@ -106,7 +106,7 @@ export default function Home() {
       <section className="hero-pattern text-white"><div className="container-x py-14 sm:py-20 text-center">
         <h2 className="text-3xl sm:text-5xl !text-white max-w-3xl mx-auto">Talk to us today. It is free, and there is no obligation.</h2>
         <p className="mt-4 text-xl text-navy-100 max-w-2xl mx-auto">Call us, or get your free retirement plan in two minutes.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4"><a href={telLink} className="btn bg-white text-navy-900 hover:bg-navy-50 !text-xl !min-h-[64px] !px-9">📞 {prettyPhone()}</a><Link href="/plan" className="btn-gold !text-xl !min-h-[64px] !px-9">Get my free plan</Link></div>
+        <div className="mt-8 flex flex-wrap justify-center gap-4"><a href={telLink} className="btn bg-white text-navy-900 hover:bg-navy-50 !text-base !min-h-[46px] !px-6">📞 {prettyPhone()}</a><Link href="/plan" className="btn-gold !text-base !min-h-[46px] !px-6">Get my free plan</Link></div>
       </div></section>
       <div className="h-24 lg:hidden" aria-hidden />
       <MobileCta href="/plan" label="Free plan" />

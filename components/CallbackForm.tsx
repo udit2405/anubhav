@@ -37,7 +37,7 @@ export function CallbackForm({ title = "Request a free call back", sub = "Tell u
         </div>
         <label className="flex gap-3 items-start">{err.consent && <span className="sr-only">{err.consent}</span>}<input type="checkbox" className="h-6 w-6 mt-1 accent-[#1F3B5C] shrink-0" checked={f.consent} onChange={(e) => set("consent", e.target.checked)} /><span className="text-base">I agree that Anubhav and its registered partners may call or WhatsApp me about investment, property and related guidance, even if my number is on DND. I can ask them to stop at any time. <a className="underline font-bold" href={BASE + "/privacy/"} target="_blank">Privacy Policy</a></span></label>
         {err.consent && <p role="alert" className="text-base text-coral-600 font-bold -mt-3">{err.consent}</p>}
-        <button className="btn-gold w-full !text-xl !min-h-[64px]" disabled={busy}>{busy ? "Sending…" : "Call me back"}</button>
+        <button className="btn-gold w-full !text-base !min-h-[46px]" disabled={busy}>{busy ? "Sending…" : "Call me back"}</button>
         <p className="text-base text-slate-600 text-center">Or call us now: <a className="font-bold underline text-navy-800" href={telLink}>{prettyPhone()}</a></p>
       </div>
     </form>

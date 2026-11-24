@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BASE } from "@/lib/base";
 import { CheckGroup, Field } from "./ui";
 import { SendButtons } from "./Send";
@@ -14,7 +14,8 @@ const blank: S = { name: "", age: "", city: "", corpusIdx: -1, source: "", pensi
 export function Planner() {
   const [s, setS] = useState<S>(blank); const [step, setStep] = useState(0); const [err, setErr] = useState<Record<string, string>>({}); const [sent, setSent] = useState(false); const [busy, setBusy] = useState(false);
   const set = <K extends keyof S>(k: K, v: S[K]) => { setS((p) => ({ ...p, [k]: v })); setErr((e) => (Object.keys(e).length ? {} : e)); };
-  useEffect(() => { document.getElementById("pl-top")?.scrollIntoView({ behavior: "smooth", block: "start" }); }, [step, sent]);
+  const first = useRef(true);
+  useEffect(() => { if (first.current) { first.current = false; return; } document.getElementById("pl-top")?.scrollIntoView({ behavior: "smooth", block: "start" }); }, [step, sent]);
   const map = useMemo(() => (s.corpusIdx >= 0 ? buildMap({ age: s.age, risk: s.risk, goals: s.goals, interests: s.interests, corpusIdx: s.corpusIdx }) : []), [s.age, s.risk, s.goals, s.interests, s.corpusIdx]);
   const score = s.corpusIdx >= 0 && s.timeline ? scoreLead(s.corpusIdx, s.timeline) : "";
 
@@ -61,7 +62,7 @@ export function Planner() {
       {step === 2 && (<div className="space-y-7"><div><h2 className="text-3xl font-bold">What matters most to you?</h2><p className="mt-1 text-lg text-slate-600">Choose as many as you like.</p></div>
         <div><p className="label">Your goals <span className="text-coral-600">*</span></p><CheckGroup legend="Goals" options={GOALS} value={s.goals} onChange={(v) => set("goals", v)} />{E("goals") && <p role="alert" className="text-sm text-coral-600 font-bold mt-2">{E("goals")}</p>}</div>
         <div><p className="label">Areas you would like to explore <span className="text-coral-600">*</span></p><CheckGroup legend="Interests" options={INTERESTS} value={s.interests} onChange={(v) => set("interests", v)} />{E("interests") && <p role="alert" className="text-sm text-coral-600 font-bold mt-2">{E("interests")}</p>}</div>
-        <div><p className="label">How do you feel about risk?</p><div className="grid sm:grid-cols-3 gap-3">{RISK.map(([k, h, d]) => <button type="button" key={k} onClick={() => set("risk", k)} aria-pressed={s.risk === k} className={`text-left rounded-2xl border border-navy-300 p-4 transition-all ${s.risk === k ? "bg-gold-500 shadow-hard " : "bg-white hover:bg-gold-50"}`}><span className="block font-bold text-lg">{h}</span><span className={`text-base ${s.risk === k ? "text-navy-100" : "text-slate-700"}`}>{d}</span></button>)}</div></div>
+        <div><p className="label">How do you feel about risk?</p><div className="grid sm:grid-cols-3 gap-3">{RISK.map(([k, h, d]) => <button type="button" key={k} onClick={() => set("risk", k)} aria-pressed={s.risk === k} className={`text-left rounded-lg border-2 p-4 transition-colors ${s.risk === k ? "bg-navy-800 border-navy-800 text-white" : "bg-white border-navy-300 hover:border-navy-700"}`}><span className="block font-bold text-lg">{h}</span><span className={`text-base ${s.risk === k ? "text-navy-100" : "text-slate-700"}`}>{d}</span></button>)}</div></div>
         <div><p className="label">When do you plan to decide? <span className="text-coral-600">*</span></p><div className="flex flex-wrap gap-3">{TIMELINES.map((t) => <Pill key={t} on={s.timeline === t} onClick={() => set("timeline", t)}>{t}</Pill>)}</div>{E("timeline") && <p role="alert" className="text-sm text-coral-600 font-bold mt-2">{E("timeline")}</p>}</div></div>)}
 
       {step === 3 && (<div className="space-y-8">
@@ -84,7 +85,7 @@ export function Planner() {
           <div className="mt-5 space-y-3">{E("consent") && <p role="alert" className="text-sm text-coral-600 font-bold">{E("consent")}</p>}
             <label className="flex gap-3 items-start"><input type="checkbox" className="h-5 w-5 mt-1 accent-[#0F1226]" checked={s.consent} onChange={(e) => set("consent", e.target.checked)} /><span>I agree that Anubhav and its registered partners may call, WhatsApp or email me about investment and real-estate guidance, even if my number is on DND. I can withdraw consent any time. I have read the <a className="underline font-bold" href={BASE + "/privacy/"} target="_blank">Privacy Policy</a>.</span></label>
             <label className="flex gap-3 items-start"><input type="checkbox" className="h-5 w-5 mt-1 accent-[#0F1226]" checked={s.consentWa} onChange={(e) => set("consentWa", e.target.checked)} /><span>Send my Money Map on WhatsApp too.</span></label></div>
-          <button type="button" className="btn-gold !text-lg !min-h-[60px] w-full sm:w-auto mt-6" onClick={submit} disabled={busy}>{busy ? "Sending…" : "Send me my free plan"}</button>
+          <button type="button" className="btn-gold !text-base !min-h-[46px] w-full sm:w-auto mt-6" onClick={submit} disabled={busy}>{busy ? "Sending…" : "Send me my free plan"}</button>
           <p className="mt-4 text-xs text-slate-500">{NOTICE}</p></div></div>)}
 
       {step < 3 && <div className="mt-10 flex flex-wrap gap-3 justify-between border-t-2 border-navy-900/10 pt-6"><button type="button" className="btn-outline" disabled={step === 0} onClick={() => setStep(step - 1)}>← Back</button><button type="button" className="btn-gold" onClick={next}>{step === 2 ? "See my Money Map →" : "Next →"}</button></div>}
@@ -93,5 +94,5 @@ export function Planner() {
   );
 }
 function Pill({ on, onClick, children, big }: { on: boolean; onClick: () => void; children: React.ReactNode; big?: boolean }) {
-  return <button type="button" aria-pressed={on} onClick={onClick} className={`rounded-full border border-navy-300 font-bold transition-all ${big ? "px-5 min-h-[60px] text-lg" : "px-5 min-h-[48px]"} ${on ? "bg-gold-500 shadow-hard-sm " : "bg-white hover:bg-gold-50"}`}>{on ? "✓ " : ""}{children}</button>;
+  return <button type="button" aria-pressed={on} onClick={onClick} className={`rounded-lg border-2 font-bold transition-colors ${big ? "px-4 min-h-[50px] text-base" : "px-4 min-h-[44px] text-base"} ${on ? "bg-navy-800 border-navy-800 text-white" : "bg-white border-navy-300 hover:border-navy-700"}`}>{on ? "✓ " : ""}{children}</button>;
 }

@@ -18,7 +18,7 @@ export function MarketExplorer() {
       <div className="grid grid-cols-2 lg:grid-cols-1 gap-3" role="tablist" aria-label="Where savings can work">
         {MARKETS.map((x) => (
           <button key={x.id} role="tab" aria-selected={sel === x.id} onClick={() => setSel(x.id)}
-            className={`flex items-center gap-3 text-left rounded-2xl border border-navy-300 p-4 min-h-[68px] transition-all ${sel === x.id ? `${x.color} shadow-hard ` : "bg-white hover:bg-gold-50"}`}>
+            className={`flex items-center gap-3 text-left rounded-lg border-2 border-navy-200 p-3 min-h-[56px] transition-all ${sel === x.id ? `${x.color} border-navy-700 ` : "bg-white hover:bg-navy-50"}`}>
             <span className="text-3xl" aria-hidden>{x.icon}</span><span className="font-bold text-lg leading-tight">{x.name}</span></button>))}
       </div>
       <div key={sel} role="tabpanel" className={`fade-in card p-6 sm:p-8 ${m.color}`}>

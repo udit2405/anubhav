@@ -31,7 +31,7 @@ export function Header() {
           {links.map(([h, l]) => <Link key={h} href={h} aria-current={active(h) ? "page" : undefined} className={`px-3 py-2 text-lg font-bold border-b-4 whitespace-nowrap ${active(h) ? "border-saffron-600 text-navy-900" : "border-transparent text-navy-700 hover:border-navy-200"}`}>{l}</Link>)}
         </nav>
         <div className="hidden xl:flex items-center gap-3"><LangSelect /></div>
-        <div className="xl:hidden flex items-center gap-2 shrink-0"><span className="hidden sm:block"><LangSelect /></span><button className="btn-outline btn-sm !px-3 !min-h-[48px]" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}</button></div>
+        <div className="xl:hidden flex items-center gap-2 shrink-0"><span className="hidden sm:block"><LangSelect /></span><button className="btn-outline btn-sm !px-3 !min-h-[40px]" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}</button></div>
       </div>
       {open && (
         <nav id="mobile-menu" className="xl:hidden border-t border-navy-200 bg-white px-5 pb-6" aria-label="Mobile">
