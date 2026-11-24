@@ -35,20 +35,20 @@ export default function Home() {
     <>
       {/* HERO */}
       <section className="bg-white border-b border-navy-200">
-        <div className="container-x py-12 sm:py-16 grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-14 items-start">
+        <div className="container-x py-6 sm:py-8 lg:py-9 grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-12 items-center">
           <div>
             <p className="eyebrow">For retired professionals</p>
-            <h1 className="mt-3 text-4xl sm:text-5xl leading-[1.15]">Make your retirement savings and your experience work for you.</h1>
-            <p className="mt-6 text-xl sm:text-2xl text-slate-700 leading-relaxed">Free, no-pressure guidance on property, safe income and part-time work. Explained in simple language, in your own language.</p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <h1 className="mt-2 text-3xl sm:text-4xl leading-[1.15]">Make your retirement savings and your experience work for you.</h1>
+            <p className="mt-4 text-lg sm:text-xl text-slate-700 leading-relaxed">Free, no-pressure guidance on property, safe income and part-time work. Explained in simple language, in your own language.</p>
+            <div className="mt-5 flex flex-wrap gap-3">
               <Link href="/plan" className="btn-gold !text-base !min-h-[46px] !px-6">Get my free retirement plan</Link>
               <a href={telLink} className="btn-outline !text-base !min-h-[46px] !px-6">📞 Call {prettyPhone()}</a>
             </div>
-            <ul className="mt-8 space-y-3 text-xl">
-              {["Completely free, with no obligation", "A friendly person calls you, at your time", "Your phone number is never shown or sold"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-1 h-7 w-7 shrink-0 rounded-full bg-mint-500 text-white text-lg flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}
+            <ul className="mt-5 space-y-2 text-base sm:text-lg">
+              {["Completely free, with no obligation", "A friendly person calls you, at your time", "Your phone number is never shown or sold"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-mint-500 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}
             </ul>
           </div>
-          <CallbackForm />
+          <CallbackForm compact />
         </div>
       </section>
 
