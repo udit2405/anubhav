@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { CATEGORIES } from "@/lib/data";
 import { telLink } from "@/lib/contact";
+import { CATEGORY_ICON, Icon } from "./Icons";
 
 /* ---------- Scroll reveal (respects reduced motion via CSS) */
 export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
@@ -73,20 +74,20 @@ export function FieldExplorer() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3" role="tablist" aria-label="Fields">
         {CATEGORIES.map((x) => (
           <button key={x.id} role="tab" aria-selected={sel === x.id} onClick={() => setSel(x.id)}
-            className={`text-left rounded-xl border-2 p-4 min-h-[92px] transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-hard " : "border-slate-200 bg-white hover:border-navy-300"}`}>
-            <span className="text-2xl" aria-hidden>{x.icon}</span><span className="block mt-1 font-semibold leading-snug">{x.name}</span>
+            className={`text-left rounded-xl border p-4 min-h-[96px] transition-colors ${sel === x.id ? "border-navy-800 bg-navy-800 text-white" : "border-line bg-white hover:border-navy-300"}`}>
+            <Icon name={CATEGORY_ICON[x.id]} className={`h-6 w-6 ${sel === x.id ? "text-gold-300" : "text-navy-700"}`} /><span className="block mt-2.5 text-[15px] font-semibold leading-snug">{x.name}</span>
           </button>
         ))}
       </div>
-      <div role="tabpanel" key={sel} className="card p-7 fade-in border-t-4 border-t-gold-500 h-fit lg:sticky lg:top-28">
-        <p className="text-4xl" aria-hidden>{c.icon}</p>
-        <h3 className="text-2xl font-bold mt-2">{c.name}</h3>
+      <div role="tabpanel" key={sel} className="card p-8 fade-in h-fit lg:sticky lg:top-28">
+        <span className="icon-tile h-12 w-12"><Icon name={CATEGORY_ICON[c.id]} className="h-6 w-6" /></span>
+        <h3 className="font-serif text-2xl font-semibold mt-5">{c.name}</h3>
         <p className="text-slate-600 mt-1">{c.blurb}</p>
-        <h4 className="mt-5 font-bold text-navy-900">Who we are looking for</h4>
-        <ul className="mt-2 space-y-1.5">{f.roles.map((r) => <li key={r} className="flex gap-2"><span className="text-gold-600" aria-hidden>●</span>{r}</li>)}</ul>
-        <h4 className="mt-5 font-bold text-navy-900">What clients will ask for</h4>
-        <ul className="mt-2 space-y-1.5">{f.asks.map((r) => <li key={r} className="flex gap-2"><span className="text-gold-600" aria-hidden>→</span>{r}</li>)}</ul>
-        <Link href="/register" className="btn-primary mt-6 w-full">I have this experience</Link>
+        <h4 className="mt-6 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Who we are looking for</h4>
+        <ul className="mt-3 space-y-2">{f.roles.map((r) => <li key={r} className="flex gap-3 items-start"><Icon name="check" className="h-4 w-4 mt-1 text-navy-700 shrink-0" strokeWidth={2.5} />{r}</li>)}</ul>
+        <h4 className="mt-6 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">What clients will ask for</h4>
+        <ul className="mt-3 space-y-2">{f.asks.map((r) => <li key={r} className="flex gap-3 items-start"><Icon name="arrow" className="h-4 w-4 mt-1 text-saffron-600 shrink-0" strokeWidth={2.25} />{r}</li>)}</ul>
+        <Link href="/register" className="btn-primary mt-7 w-full">I have this experience <Icon name="arrow" className="h-4 w-4" /></Link>
       </div>
     </div>
   );
@@ -129,12 +130,12 @@ export function StepGuide({ steps = STEPS, cta = { href: "/register", label: "St
 export function Faq({ items }: { items: string[][] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="divide-y divide-slate-200 border-y border-slate-200">
+    <div className="divide-y divide-line border-y border-line">
       {items.map(([q, a], k) => (
         <div key={q}>
-          <h3><button type="button" className="w-full flex justify-between items-center gap-4 py-5 text-left text-xl font-semibold text-navy-900 hover:text-navy-600" aria-expanded={open === k} onClick={() => setOpen(open === k ? null : k)}>
-            {q}<span className={`h-9 w-9 shrink-0 rounded-full border-2 border-navy-800 flex items-center justify-center text-xl transition-transform ${open === k ? "rotate-45 bg-navy-800 text-white" : ""}`} aria-hidden>+</span></button></h3>
-          <div className={`grid transition-all duration-300 ${open === k ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><div className="overflow-hidden"><p className="pb-5 text-lg text-slate-700 max-w-3xl">{a}</p></div></div>
+          <h3><button type="button" className="w-full flex justify-between items-center gap-4 py-5 text-left text-lg font-semibold text-navy-900 hover:text-navy-600" aria-expanded={open === k} onClick={() => setOpen(open === k ? null : k)}>
+            {q}<span className={`h-8 w-8 shrink-0 rounded-full border border-navy-300 flex items-center justify-center transition-transform ${open === k ? "rotate-45 bg-navy-800 border-navy-800 text-white" : "text-navy-800"}`} aria-hidden><Icon name="plus" className="h-4 w-4" strokeWidth={2} /></span></button></h3>
+          <div className={`grid transition-all duration-300 ${open === k ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}><div className="overflow-hidden"><p className="pb-6 pr-12 text-slate-600 leading-relaxed">{a}</p></div></div>
         </div>
       ))}
     </div>
@@ -145,8 +146,8 @@ export function Faq({ items }: { items: string[][] }) {
 export function MobileCta({ href = "/register", label = "List my expertise" }: { href?: string; label?: string }) {
   return (
     <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-navy-200 p-3 grid grid-cols-2 gap-3">
-      <a href={telLink} className="btn-primary !min-h-[50px] !px-2 whitespace-nowrap">📞 Call us</a>
-      <Link href={href} className="btn-gold !min-h-[50px] !px-2 whitespace-nowrap">{label}</Link>
+      <a href={telLink} className="btn-outline !min-h-[50px] !px-2 whitespace-nowrap"><Icon name="phone" className="h-4 w-4" /> Call us</a>
+      <Link href={href} className="btn-primary !min-h-[50px] !px-2 whitespace-nowrap">{label}</Link>
     </div>
   );
 }

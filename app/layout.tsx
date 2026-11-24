@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Atkinson_Hyperlegible, Source_Serif_4 } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import { AppProvider } from "@/lib/app";
 import { Footer, Header } from "@/components/Shell";
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Anubhav: Experience Never Retires.", description: "Share your experience, free or paid, and get help at home.", type: "website", locale: "en_IN", images: [{ url: site.replace(/\/$/, "") + "/og.png", width: 1200, height: 630 }] },
 };
 const display = Source_Serif_4({ subsets: ["latin"], variable: "--font-display", display: "swap" });
-const body = Atkinson_Hyperlegible({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-body", display: "swap" });
+const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
