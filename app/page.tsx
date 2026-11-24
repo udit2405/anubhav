@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <>
       {/* HERO: share your expertise */}
-      <section className="bg-navy-50 border-b border-navy-200 lg:min-h-[calc(100svh-97px)] flex items-center">
+      <section className="bg-navy-50 border-b border-navy-200 lg:min-h-[calc(100svh-101px)] flex items-center">
         <div className="container-x w-full py-6 lg:py-4 grid lg:grid-cols-[1.15fr_1fr] gap-7 lg:gap-12 items-center">
           <div>
             <p className="eyebrow">A platform built for India’s retired</p>
@@ -133,7 +133,7 @@ export default function Home() {
 
       {/* FINAL CTA */}
       <section className="hero-pattern text-white"><div className="container-x py-14 sm:py-20 text-center">
-        <h2 className="text-3xl sm:text-5xl !text-white max-w-3xl mx-auto">Experience doesn’t retire. Put yours to work.</h2>
+        <h2 className="text-3xl sm:text-5xl !text-white max-w-3xl mx-auto">Experience never retires. Put yours to work.</h2>
         <p className="mt-4 text-xl text-navy-100 max-w-2xl mx-auto">Free to join. About 10 minutes. Or call us and we will help you.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4"><Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link><a href={telLink} className="btn bg-white text-navy-900 hover:bg-navy-50 !text-lg !min-h-[52px] !px-7">📞 {prettyPhone()}</a></div>
       </div></section>

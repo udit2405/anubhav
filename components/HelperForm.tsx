@@ -48,7 +48,7 @@ Confirmed: willing to submit ID + address proof + police verification; attend in
       <details className="card p-5"><summary className="font-semibold cursor-pointer">Preview what will be sent</summary><pre className="mt-3 whitespace-pre-wrap text-sm">{body}</pre></details>
       <button className="btn-outline" onClick={() => setDone(false)}>← Edit my application</button>
     </div>);
-  const chk = "h-5 w-5 mt-1 accent-[#183358]";
+  const chk = "h-5 w-5 mt-1 accent-[#123C2D]";
   return (
     <div id="hf-top" className="scroll-mt-24 space-y-6">
       <p className="text-slate-600">Fields marked <span className="text-red-700">*</span> are required. Your phone and email are kept private.</p>

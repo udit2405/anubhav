@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/ui";
 import { prettyPhone, telLink } from "@/lib/contact";
-export const metadata: Metadata = { title: "About Us", description: "Why we built Anubhav: because experience doesn’t retire." };
+export const metadata: Metadata = { title: "About Us", description: "Why we built Anubhav: because experience never retires." };
 const promises = [
   ["🎁", "Free for professionals", "We will never charge a retired professional to register or to be listed."],
   ["🔒", "Privacy first", "Phone numbers, emails and documents are never shown publicly."],
@@ -11,7 +11,7 @@ const promises = [
 ];
 export default function Page() {
   return (<>
-    <PageHeader eyebrow="Our story" title="About Anubhav" sub="Experience doesn’t retire." icon="🪔" />
+    <PageHeader eyebrow="Our story" title="About Anubhav" sub="Experience never retires." icon="🪔" />
     <section className="container-x py-12 grid lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
       <div className="space-y-5 text-lg text-slate-700 leading-relaxed">
         <p>Every year, thousands of people retire from government departments, banks, railways, the armed forces and public-sector companies after 25 to 40 years of specialised work. They know how approvals really move, how tenders are really evaluated, how a bridge is actually inspected.</p>

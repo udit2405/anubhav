@@ -50,7 +50,7 @@ export function ProfilePreview() {
         <div><label className="text-sm font-semibold text-navy-900" htmlFor="pv-desig">Last designation</label><div className="mt-1"><Autocomplete id="pv-desig" value={desig} onChange={setDesig} options={DESIGNATIONS.map((d) => ({ value: d }))} max={6} placeholder="e.g. Executive Engineer" customLabel="Use" /></div></div>
         <div>
           <div className="flex justify-between"><label className="text-sm font-semibold text-navy-900" htmlFor="pv-yrs">Years of service</label><span className="font-serif font-bold text-navy-800">{years}</span></div>
-          <input id="pv-yrs" type="range" min={5} max={45} value={years} onChange={(e) => setYears(Number(e.target.value))} className="w-full accent-[#B8923A] h-8" />
+          <input id="pv-yrs" type="range" min={5} max={45} value={years} onChange={(e) => setYears(Number(e.target.value))} className="w-full accent-[#123C2D] h-8" />
         </div>
         <fieldset><legend className="text-sm font-semibold text-navy-900 mb-1.5">Pick up to 3 strengths</legend>
           <div className="flex flex-wrap gap-2">{QUICK.map((s) => <button type="button" key={s} onClick={() => toggle(s)} aria-pressed={specs.includes(s)} className={`rounded-full px-3 min-h-[40px] text-sm font-medium border transition-colors ${specs.includes(s) ? "bg-navy-800 text-white border-navy-800" : "bg-white border-slate-300 hover:border-navy-500"}`}>{specs.includes(s) ? "✓ " : ""}{s}</button>)}</div>

@@ -69,7 +69,7 @@ Elder's phone: ${f.elderPhone || (f.who === "self" ? f.phone : "-")}`, [chosen, 
             {E("services") && <p role="alert" className="text-red-700 font-medium">{E("services")}</p>}
             <div className="space-y-3">{SERVICES.map((s) => { const on = sel[s.id] != null; return (
               <div key={s.id} className={`rounded-xl border-2 p-4 transition-colors ${on ? "border-navy-800 bg-navy-50" : "border-slate-200 bg-white"}`}>
-                <label className="flex gap-4 items-start cursor-pointer"><input type="checkbox" className="h-6 w-6 mt-1 accent-[#183358]" checked={on} onChange={() => toggle(s.id)} />
+                <label className="flex gap-4 items-start cursor-pointer"><input type="checkbox" className="h-6 w-6 mt-1 accent-[#123C2D]" checked={on} onChange={() => toggle(s.id)} />
                   <span className="flex-1"><span className="text-xl font-bold">{s.icon} {s.name}</span><span className="block text-slate-700">{s.short}</span><span className="block text-sm font-semibold text-saffron-600 mt-1">{s.priceLabel}</span></span></label>
                 {on && <div className="mt-3 pl-10 flex flex-wrap items-center gap-3"><span className="font-semibold">How many {s.unitPlural}?</span>
                   <div className="flex items-center gap-2"><button type="button" aria-label="Fewer" className="btn-outline btn-sm !px-4" onClick={() => bump(s.id, -1)}>−</button><span className="w-10 text-center font-serif text-2xl font-bold" aria-live="polite">{sel[s.id]}</span><button type="button" aria-label="More" className="btn-outline btn-sm !px-4" onClick={() => bump(s.id, 1)}>+</button></div>
@@ -78,7 +78,7 @@ Elder's phone: ${f.elderPhone || (f.who === "self" ? f.phone : "-")}`, [chosen, 
           </>)}
           {step === 1 && (<>
             <h2 className="text-2xl font-bold">Who needs help?</h2>
-            <div role="radiogroup" aria-label="Who is booking" className="grid sm:grid-cols-2 gap-3">{([["family", "I am booking for a parent or relative"], ["self", "I am booking for myself"]] as const).map(([v, l]) => <label key={v} className={`flex items-center gap-3 rounded-xl border-2 px-4 min-h-[56px] cursor-pointer ${f.who === v ? "border-navy-800 bg-navy-50" : "border-slate-300"}`}><input type="radio" className="h-5 w-5 accent-[#183358]" checked={f.who === v} onChange={() => set("who", v)} />{l}</label>)}</div>
+            <div role="radiogroup" aria-label="Who is booking" className="grid sm:grid-cols-2 gap-3">{([["family", "I am booking for a parent or relative"], ["self", "I am booking for myself"]] as const).map(([v, l]) => <label key={v} className={`flex items-center gap-3 rounded-xl border-2 px-4 min-h-[56px] cursor-pointer ${f.who === v ? "border-navy-800 bg-navy-50" : "border-slate-300"}`}><input type="radio" className="h-5 w-5 accent-[#123C2D]" checked={f.who === v} onChange={() => set("who", v)} />{l}</label>)}</div>
             <div className="grid sm:grid-cols-2 gap-6">
               <Field label="Name of the person who needs help" required error={E("name")} htmlFor="b-name"><input id="b-name" className="input" value={f.name} onChange={(e) => set("name", e.target.value)} /></Field>
               <Field label="Age" error={E("age")} htmlFor="b-age"><input id="b-age" className="input" inputMode="numeric" value={f.age} onChange={(e) => set("age", e.target.value.replace(/\D/g, "").slice(0, 3))} /></Field>
@@ -97,7 +97,7 @@ Elder's phone: ${f.elderPhone || (f.who === "self" ? f.phone : "-")}`, [chosen, 
               <Field label="Date" required error={E("date")} htmlFor="b-date"><input id="b-date" type="date" min={today()} className="input" value={f.date} disabled={f.flexible} onChange={(e) => set("date", e.target.value)} /></Field>
               <Field label="Preferred time" htmlFor="b-time"><input id="b-time" type="time" className="input" value={f.time} onChange={(e) => set("time", e.target.value)} /></Field>
             </div>
-            <label className="flex gap-3 items-center"><input type="checkbox" className="h-5 w-5 accent-[#183358]" checked={f.flexible} onChange={(e) => set("flexible", e.target.checked)} /><span>I am flexible on the date. Suggest the earliest slot.</span></label>
+            <label className="flex gap-3 items-center"><input type="checkbox" className="h-5 w-5 accent-[#123C2D]" checked={f.flexible} onChange={(e) => set("flexible", e.target.checked)} /><span>I am flexible on the date. Suggest the earliest slot.</span></label>
             {askDest && <Field label="Hospital / destination" htmlFor="b-dest" hint="For hospital visits, add the doctor, department and appointment time if you have them."><input id="b-dest" className="input" value={f.destination} onChange={(e) => set("destination", e.target.value)} placeholder="e.g. SMS Hospital, Cardiology, 11 am" /></Field>}
             <Field label="Notes for the helper" htmlFor="b-notes"><textarea id="b-notes" rows={3} className="input" value={f.notes} onChange={(e) => set("notes", e.target.value)} placeholder="Anything that will help the visit go smoothly" /></Field>
             <div className="rounded-xl border border-slate-300 p-5 space-y-5"><h3 className="text-xl font-bold">Your contact details</h3>
@@ -112,7 +112,7 @@ Elder's phone: ${f.elderPhone || (f.who === "self" ? f.phone : "-")}`, [chosen, 
             <h2 className="text-2xl font-bold">Review your booking</h2>
             <dl className="card p-5 grid sm:grid-cols-2 gap-3">{[["Person", `${f.name}${f.age ? ", " + f.age : ""}`], ["Place", `${f.area}, ${f.city}`], ["When", f.flexible ? "Flexible" : `${f.date}${f.time ? " at " + f.time : ""}`], ["Booked by", `${f.bookerName} · ${f.phone}`], ["Helper preference", `${f.gender}, ${f.lang}`], ["Special needs", f.needs.join(", ") || "None"]].map(([a, b]) => <div key={a}><dt className="text-sm text-slate-600">{a}</dt><dd className="font-semibold">{b}</dd></div>)}</dl>
             {E("consent") && <p role="alert" className="text-red-700 font-medium">{E("consent")}</p>}
-            <label className="flex gap-3 items-start"><input type="checkbox" className="h-5 w-5 mt-1 accent-[#183358]" checked={f.consent} onChange={(e) => set("consent", e.target.checked)} /><span>I understand helpers are verified part-time helpers, not doctors or nurses. In an emergency I will call 112 / 108. I agree to share these details with Anubhav to arrange the booking.</span></label>
+            <label className="flex gap-3 items-start"><input type="checkbox" className="h-5 w-5 mt-1 accent-[#123C2D]" checked={f.consent} onChange={(e) => set("consent", e.target.checked)} /><span>I understand helpers are verified part-time helpers, not doctors or nurses. In an emergency I will call 112 / 108. I agree to share these details with Anubhav to arrange the booking.</span></label>
           </>)}
         </div>
         <div className="mt-10 flex flex-wrap gap-3 justify-between border-t border-slate-200 pt-6">

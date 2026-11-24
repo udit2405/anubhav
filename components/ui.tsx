@@ -154,7 +154,7 @@ export function CheckGroup({ options, value, onChange, legend, columns = "sm:gri
       <div className={`grid gap-2 ${columns}`}>
         {options.map((o) => (
           <label key={o} className={`flex items-center gap-3 rounded-lg border px-4 min-h-[52px] cursor-pointer ${value.includes(o) ? "border-navy-700 bg-navy-50" : "border-slate-300 bg-white hover:bg-slate-50"}`}>
-            <input type="checkbox" className="h-5 w-5 accent-[#183358]" checked={value.includes(o)} onChange={() => toggle(o)} /> <span>{o}</span>
+            <input type="checkbox" className="h-5 w-5 accent-[#123C2D]" checked={value.includes(o)} onChange={() => toggle(o)} /> <span>{o}</span>
           </label>
         ))}
       </div>

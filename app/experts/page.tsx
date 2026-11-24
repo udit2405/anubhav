@@ -37,7 +37,7 @@ function Inner() {
       <div><label className="label" htmlFor="x-svc">Service offered</label><select id="x-svc" className={sel} value={f.service} onChange={(e) => setF({ service: e.target.value })}><option value="">Any</option>{SERVICES.map((x) => <option key={x}>{x}</option>)}</select></div>
       <div><label className="label" htmlFor="x-fee">Free or paid</label><select id="x-fee" className={sel} value={f.fee} onChange={(e) => setF({ fee: e.target.value as Filters["fee"] })}><option value="">Both</option><option value="free">Offers free services</option><option value="paid">Paid</option></select></div>
       <div><label className="label" htmlFor="x-av">Availability</label><select id="x-av" className={sel} value={f.availability} onChange={(e) => setF({ availability: e.target.value })}><option value="">Any</option>{AVAILABILITY.map((x) => <option key={x}>{x}</option>)}</select></div>
-      <label className="flex items-center gap-3 min-h-[52px]"><input type="checkbox" className="h-5 w-5 accent-[#183358]" checked={f.verifiedOnly} onChange={(e) => setF({ verifiedOnly: e.target.checked })} /><span className="font-semibold">Verified profiles only</span></label>
+      <label className="flex items-center gap-3 min-h-[52px]"><input type="checkbox" className="h-5 w-5 accent-[#123C2D]" checked={f.verifiedOnly} onChange={(e) => setF({ verifiedOnly: e.target.checked })} /><span className="font-semibold">Verified profiles only</span></label>
       {active.length > 0 && <button className="btn-outline w-full" onClick={() => router.replace("/experts")}>Clear all filters</button>}
     </div>
   );

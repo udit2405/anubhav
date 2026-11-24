@@ -6,6 +6,7 @@ import { useApp } from "@/lib/app";
 import { DISCLAIMER } from "@/lib/data";
 import { LANGS, type Lang } from "@/lib/i18n";
 import { prettyPhone, telLink } from "@/lib/contact";
+import { BASE } from "@/lib/base";
 
 export function Header() {
   const { t } = useApp(); const path = usePathname(); const [open, setOpen] = useState(false);
@@ -21,10 +22,10 @@ export function Header() {
           <a href={telLink} className="font-bold underline-offset-4 hover:underline ml-auto sm:ml-0 whitespace-nowrap">📞 <span className="hidden sm:inline">Call us: </span>{prettyPhone()}</a>
         </div>
       </div>
-      <div className="container-x flex items-center justify-between gap-2 sm:gap-3 h-16">
-        <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0" aria-label="Anubhav home">
-          <span className="h-10 w-10 rounded-lg bg-navy-800 text-white flex items-center justify-center font-serif text-2xl font-bold">अ</span>
-          <span className="leading-tight"><span className="block font-serif text-xl sm:text-2xl font-bold text-navy-900">Anubhav</span><span className="hidden sm:block text-xs text-slate-600">Experience doesn’t retire</span></span>
+      <div className="container-x flex items-center justify-between gap-2 sm:gap-3 h-[68px]">
+        <Link href="/" className="shrink-0" aria-label="Anubhav, Experience Never Retires. Home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={BASE + "/brand/logo-horizontal.png"} alt="Anubhav: Experience Never Retires." width={1049} height={225} className="h-10 sm:h-[3.3rem] w-auto" />
         </Link>
         <nav className="hidden xl:flex items-center gap-1" aria-label="Main">
           {links.map(([h, l]) => <Link key={h} href={h} aria-current={active(h) ? "page" : undefined} className={`px-3 py-2 text-base font-bold border-b-4 whitespace-nowrap ${active(h) ? "border-saffron-600 text-navy-900" : "border-transparent text-navy-700 hover:border-navy-200"}`}>{l}</Link>)}
@@ -58,7 +59,8 @@ export function Footer() {
   return (
     <footer className="bg-navy-900 text-navy-200 mt-auto">
       <div className="container-x py-12 grid gap-10 md:grid-cols-4 text-lg">
-        <div className="md:col-span-2"><p className="font-serif text-2xl text-white font-bold">Anubhav</p><p className="mt-2 max-w-md">A platform built for India’s retired: share your experience and get help at home.</p>
+        <div className="md:col-span-2">{/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={BASE + "/brand/logo-horizontal-light.png"} alt="Anubhav: Experience Never Retires." width={1049} height={225} className="h-14 w-auto" /><p className="mt-2 max-w-md">A platform built for India’s retired: share your experience and get help at home.</p>
           <a href={telLink} className="inline-block mt-4 text-white font-bold text-xl underline">📞 {prettyPhone()}</a></div>
         <div><p className="font-bold text-white mb-2">Explore</p><ul className="space-y-2"><li><Link href="/register" className="hover:text-white underline">List Your Expertise</Link></li><li><Link href="/saathi" className="hover:text-white underline">Help at Home (Saathi)</Link></li></ul></div>
         <div><p className="font-bold text-white mb-2">Company</p><ul className="space-y-2"><li><Link href="/about" className="hover:text-white underline">About Us</Link></li><li><Link href="/contact" className="hover:text-white underline">Contact Us</Link></li><li><Link href="/how-it-works" className="hover:text-white underline">How It Works</Link></li><li><Link href="/privacy" className="hover:text-white underline">Privacy & Terms</Link></li></ul></div>

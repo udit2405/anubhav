@@ -84,7 +84,7 @@ export function ProfileForm() {
   const next = () => { const e = validate(s, step); setErrors(e); if (Object.keys(e).length) { document.getElementById("form-top")?.scrollIntoView({ behavior: "smooth" }); return; } go(step + 1); };
   const finish = () => { const e = validate(s, 4); setErrors(e); if (!Object.keys(e).length) { submitLead("expert", { name: s.name, phone: s.mobile, email: s.email, age: s.age, city: s.city, state: s.state, department: s.department, designation: s.designation, years_service: s.yearsService, retirement_year: s.retirementYear, category: s.category, specializations: s.specializations, skills: s.skills, services: s.services, pricing: s.pricingModels, fee: s.fee, availability: s.availability, summary: s.summary }); setDone(true); document.getElementById("form-top")?.scrollIntoView({ behavior: "smooth" }); } };
   const err = (k: string) => errors[k];
-  const chk = "h-5 w-5 mt-1 accent-[#183358]";
+  const chk = "h-5 w-5 mt-1 accent-[#123C2D]";
 
   if (done) return (
     <div id="form-top" className="space-y-6" role="status">
