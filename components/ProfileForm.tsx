@@ -97,7 +97,7 @@ export function ProfileForm() {
 
   return (
     <div id="form-top" className="scroll-mt-24">
-      <nav aria-label="Form progress" className="mb-8"><ol className="flex flex-wrap gap-2">{STEPS.map((l, i) => (
+      <nav aria-label="Form progress" className="mb-8"><div className="h-2.5 rounded-full bg-navy-100 overflow-hidden mb-4" aria-hidden><div className="h-full bg-saffron-600 transition-all duration-300" style={{ width: `${((step + 1) / STEPS.length) * 100}%` }} /></div><ol className="flex flex-wrap gap-2">{STEPS.map((l, i) => (
         <li key={l}><button type="button" disabled={i > step} onClick={() => i < step && go(i)} aria-current={i === step ? "step" : undefined} className={`rounded-full px-4 min-h-[44px] text-sm font-semibold border ${i === step ? "bg-navy-800 text-white border-navy-800" : i < step ? "bg-navy-50 text-navy-800 border-navy-200" : "bg-white text-slate-500 border-slate-300"}`}><span className="mr-1.5">{i + 1}.</span>{l}</button></li>))}</ol>
         {prefilled && <p role="status" className="mt-4 rounded-lg bg-green-50 border border-green-300 p-3">We have filled in what you typed on the homepage. Please check it and complete the rest.</p>}
         <p className="mt-3 text-slate-600">Step {step + 1} of {STEPS.length}. Fields marked <span className="text-red-700">*</span> are required.</p></nav>

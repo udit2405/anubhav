@@ -37,11 +37,12 @@ export default function Home() {
   return (
     <>
       {/* HERO: share your expertise */}
-      <section className="bg-white border-b border-navy-200 lg:min-h-[calc(100svh-97px)] flex items-center">
+      <section className="bg-navy-50 border-b border-navy-200 lg:min-h-[calc(100svh-97px)] flex items-center">
         <div className="container-x w-full py-6 lg:py-4 grid lg:grid-cols-[1.15fr_1fr] gap-7 lg:gap-12 items-center">
           <div>
             <p className="eyebrow">A platform built for India’s retired</p>
             <h1 className="mt-2 text-4xl sm:text-[2.6rem] leading-[1.15]">Decades of experience. New opportunities.</h1>
+            <div className="mt-3 h-1 w-16 rounded bg-saffron-600" aria-hidden />
             <p className="mt-4 text-xl text-slate-700 leading-relaxed">List yourself for free. Advise businesses, mentor young people or help your community, free or paid, on your own terms.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link>
@@ -57,7 +58,8 @@ export default function Home() {
 
       {/* THREE WAYS */}
       <section className="section container-x" aria-labelledby="ways">
-        <h2 id="ways" className="text-3xl sm:text-4xl max-w-3xl">What you can do on Anubhav</h2>
+        <p className="eyebrow">What you can do</p>
+        <h2 id="ways" className="mt-1 text-3xl sm:text-4xl max-w-3xl">What you can do on Anubhav</h2>
         <p className="mt-3 text-xl text-slate-700 max-w-3xl">Use one, or both.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {ways.map((x) => (
@@ -73,7 +75,8 @@ export default function Home() {
 
       {/* FREE OR PAID */}
       <section className="section bg-white border-y border-navy-200" aria-labelledby="fp"><div className="container-x">
-        <h2 id="fp" className="text-3xl sm:text-4xl max-w-3xl">Free or paid. You choose.</h2>
+        <p className="eyebrow">Your choice</p>
+        <h2 id="fp" className="mt-1 text-3xl sm:text-4xl max-w-3xl">Free or paid. You choose.</h2>
         <p className="mt-3 text-xl text-slate-700 max-w-3xl">Every expert decides how they want to help, and can change it any time.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {pricing.map((x) => <div key={x.h} className={`card p-7 ${x.tag}`}><span className="text-4xl" aria-hidden>{x.icon}</span><h3 className="mt-3 text-2xl">{x.h}</h3><p className="mt-2 text-lg text-slate-800">{x.d}</p></div>)}
@@ -82,14 +85,16 @@ export default function Home() {
 
       {/* WHICH FIELD */}
       <section className="section container-x" aria-labelledby="who">
-        <h2 id="who" className="text-3xl sm:text-4xl max-w-3xl">Which field did you serve in?</h2>
+        <p className="eyebrow">Fields we invite</p>
+        <h2 id="who" className="mt-1 text-3xl sm:text-4xl max-w-3xl">Which field did you serve in?</h2>
         <p className="mt-3 text-xl text-slate-700 max-w-3xl">Tap a field to see who we are inviting and what people will ask for. Do not see yours? Register anyway.</p>
         <div className="mt-10"><FieldExplorer /></div>
       </section>
 
       {/* HOW IT WORKS */}
       <section className="section bg-white border-y border-navy-200" aria-labelledby="how"><div className="container-x">
-        <h2 id="how" className="text-3xl sm:text-4xl">How listing yourself works</h2>
+        <p className="eyebrow">Step by step</p>
+        <h2 id="how" className="mt-1 text-3xl sm:text-4xl">How listing yourself works</h2>
         <ol className="mt-10 grid gap-6 md:grid-cols-2">
           {steps.map(([h, d], i) => (
             <li key={h} className="card p-6 flex gap-5 items-start"><span className="h-14 w-14 shrink-0 rounded-full bg-navy-800 text-white font-serif text-2xl font-bold flex items-center justify-center" aria-hidden>{i + 1}</span>
@@ -112,7 +117,8 @@ export default function Home() {
 
       {/* TRUST */}
       <section className="section container-x" aria-labelledby="safe">
-        <h2 id="safe" className="text-3xl sm:text-4xl max-w-3xl">Built on trust</h2>
+        <p className="eyebrow">Our promise</p>
+        <h2 id="safe" className="mt-1 text-3xl sm:text-4xl max-w-3xl">Built on trust</h2>
         <ul className="mt-8 grid gap-5 md:grid-cols-2">
           {safety.map(([h, d]) => <li key={h} className="card p-6 flex gap-4"><span className="h-9 w-9 shrink-0 rounded-full bg-mint-500 text-white flex items-center justify-center text-xl" aria-hidden>✓</span><div><h3 className="text-xl">{h}</h3><p className="mt-1 text-lg text-slate-700">{d}</p></div></li>)}
         </ul>
@@ -120,7 +126,8 @@ export default function Home() {
 
       {/* FAQ */}
       <section className="section bg-white border-y border-navy-200" aria-labelledby="faq"><div className="container-x max-w-4xl">
-        <h2 id="faq" className="text-3xl sm:text-4xl">Questions you may have</h2>
+        <p className="eyebrow">Good to know</p>
+        <h2 id="faq" className="mt-1 text-3xl sm:text-4xl">Questions you may have</h2>
         <div className="mt-8"><Faq items={faq} /></div>
       </div></section>
 

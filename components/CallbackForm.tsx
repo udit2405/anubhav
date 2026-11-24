@@ -26,7 +26,7 @@ export function CallbackForm({ title = "Request a free call back", sub = "Tell u
       <div className="mt-5"><SendButtons subject={`Call-back request: ${f.name}`} body={body} filename="anubhav-callback" /></div>
       <p className="mt-4 text-base text-slate-600">Prefer to speak now? Call <a className="font-bold underline" href={telLink}>{prettyPhone()}</a>.</p></div>);
   return (
-    <form className={`card ${compact ? "p-5" : "p-6 sm:p-8"}`} noValidate onSubmit={(e) => { e.preventDefault(); submit(); }}>
+    <form className={`card shadow-hard-lg ${compact ? "p-5" : "p-6 sm:p-8"}`} noValidate onSubmit={(e) => { e.preventDefault(); submit(); }}>
       <h2 className={compact ? "text-xl" : "text-2xl"}>{title}</h2><p className={`mt-1 text-slate-700 ${compact ? "text-base" : "text-lg"}`}>{sub}</p>
       <div className={`mt-4 ${compact ? "space-y-3.5" : "space-y-5"}`}>
         <div className={compact ? "grid sm:grid-cols-2 gap-3.5" : "space-y-5"}>

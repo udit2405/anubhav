@@ -69,8 +69,20 @@ export function ErrorBox({ msg, retry }: { msg: string; retry?: () => void }) {
 export function Empty({ title, children }: { title: string; children?: ReactNode }) {
   return <div className="rounded-xl border border-dashed border-slate-300 p-10 text-center"><p className="text-xl font-serif font-bold text-navy-900">{title}</p><div className="mt-2 text-slate-600">{children}</div></div>;
 }
-export function PageHeader({ title, sub }: { title: string; sub?: string }) {
-  return <div className="bg-navy-50 border-b border-navy-200"><div className="container-x py-10 sm:py-12"><h1 className="text-3xl sm:text-4xl">{title}</h1>{sub && <p className="mt-3 text-xl text-slate-700 max-w-3xl">{sub}</p>}</div></div>;
+export function PageHeader({ title, sub, eyebrow, icon }: { title: string; sub?: string; eyebrow?: string; icon?: string }) {
+  return (
+    <div className="bg-navy-50 border-b border-navy-200">
+      <div className="container-x py-9 sm:py-12 flex items-center justify-between gap-8">
+        <div className="max-w-3xl">
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+          <h1 className="mt-1 text-3xl sm:text-4xl">{title}</h1>
+          <div className="mt-3 h-1 w-14 rounded bg-saffron-600" aria-hidden />
+          {sub && <p className="mt-4 text-lg sm:text-xl text-slate-700">{sub}</p>}
+        </div>
+        {icon && <div className="hidden md:flex h-28 w-28 shrink-0 items-center justify-center rounded-2xl bg-white border border-navy-200 text-6xl shadow-hard" aria-hidden>{icon}</div>}
+      </div>
+    </div>
+  );
 }
 export function Disclaimer({ className = "" }: { className?: string }) {
   return <p className={`text-sm text-slate-600 ${className}`}>Listed professionals are independent individuals. They do not represent, and are not endorsed by, any government department, bank, PSU or organisation they previously served. Profile details are self-declared unless marked “Verified”.</p>;
