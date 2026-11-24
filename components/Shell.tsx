@@ -17,7 +17,7 @@ export function Header() {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white p-3 z-50">Skip to content</a>
       <div className="bg-navy-800 text-white">
         <div className="container-x flex items-center justify-between gap-3 py-1.5 text-sm">
-          <span className="hidden sm:block">Free, no-obligation guidance for retired professionals</span>
+          <span className="hidden sm:block">A platform built for India’s retired · Free, no-obligation guidance</span>
           <span className="sm:hidden"><LangSelect compact /></span>
           <a href={telLink} className="font-bold underline-offset-4 hover:underline ml-auto sm:ml-0 whitespace-nowrap">📞 <span className="hidden sm:inline">Call us: </span>{prettyPhone()}</a>
         </div>
@@ -59,7 +59,7 @@ export function Footer() {
   return (
     <footer className="bg-navy-900 text-navy-200 mt-auto">
       <div className="container-x py-12 grid gap-10 md:grid-cols-4 text-lg">
-        <div className="md:col-span-2"><p className="font-serif text-2xl text-white font-bold">Anubhav</p><p className="mt-2 max-w-md">Guidance, opportunities and help at home for retired professionals and their families.</p>
+        <div className="md:col-span-2"><p className="font-serif text-2xl text-white font-bold">Anubhav</p><p className="mt-2 max-w-md">A platform built for India’s retired: guidance, opportunities and help at home, for you and your family.</p>
           <a href={telLink} className="inline-block mt-4 text-white font-bold text-xl underline">📞 {prettyPhone()}</a></div>
         <div><p className="font-bold text-white mb-2">Explore</p><ul className="space-y-2"><li><Link href="/plan" className="hover:text-white underline">Free Retirement Plan</Link></li><li><Link href="/register" className="hover:text-white underline">Earn from Your Experience</Link></li><li><Link href="/saathi" className="hover:text-white underline">Help at Home (Saathi)</Link></li><li><Link href="/hire" className="hover:text-white underline">Hire an Expert</Link></li></ul></div>
         <div><p className="font-bold text-white mb-2">Company</p><ul className="space-y-2"><li><Link href="/about" className="hover:text-white underline">About Us</Link></li><li><Link href="/contact" className="hover:text-white underline">Contact Us</Link></li><li><Link href="/how-it-works" className="hover:text-white underline">How It Works</Link></li><li><Link href="/privacy" className="hover:text-white underline">Privacy & Terms</Link></li></ul></div>

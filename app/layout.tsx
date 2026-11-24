@@ -7,9 +7,9 @@ import { Footer, Header } from "@/components/Shell";
 const site = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3210";
 export const metadata: Metadata = {
   metadataBase: new URL(site),
-  title: { default: "Anubhav – Put Your Decades of Experience to Work | Free for Retired Professionals", template: "%s | Anubhav" },
-  description: "Retired government officers, engineers, bankers, doctors and scientists: list your expertise for free and get hired for consulting, mentoring and project work. Your contact details stay private.",
-  openGraph: { title: "Anubhav – Experience Doesn’t Retire", description: "Affordable access to decades of practical expertise.", type: "website", locale: "en_IN" },
+  title: { default: "Anubhav – A Platform Built for India’s Retired | Savings, Work & Help at Home", template: "%s | Anubhav" },
+  description: "Anubhav is a platform built for India’s retired: free guidance on savings and property, work that uses your experience, and trusted help at home. Your contact details stay private.",
+  openGraph: { title: "Anubhav – A platform built for India’s retired", description: "Savings guidance, work that uses your experience, and help at home, in one trusted place.", type: "website", locale: "en_IN" },
 };
 const display = Source_Serif_4({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Atkinson_Hyperlegible({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-body", display: "swap" });

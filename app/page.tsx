@@ -37,9 +37,9 @@ export default function Home() {
       <section className="bg-white border-b border-navy-200 lg:min-h-[calc(100svh-97px)] flex items-center">
         <div className="container-x w-full py-6 lg:py-4 grid lg:grid-cols-[1.15fr_1fr] gap-7 lg:gap-12 items-center">
           <div>
-            <p className="eyebrow">For retired professionals</p>
-            <h1 className="mt-2 text-4xl sm:text-[2.6rem] leading-[1.15]">Make your retirement savings and your experience work for you.</h1>
-            <p className="mt-4 text-xl text-slate-700 leading-relaxed">Free, no-pressure guidance on property, safe income and part-time work. Explained in simple language, in your own language.</p>
+            <p className="eyebrow">A platform built for India’s retired</p>
+            <h1 className="mt-2 text-4xl sm:text-[2.6rem] leading-[1.15]">Everything your retirement needs, in one trusted place.</h1>
+            <p className="mt-4 text-xl text-slate-700 leading-relaxed">Guidance for your savings, work that uses your experience, and trusted help at home. Free, simple, and in your own language.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/plan" className="btn-gold !text-lg !min-h-[52px] !px-7">Get my free retirement plan</Link>
               <a href={telLink} className="btn-outline !text-lg !min-h-[52px] !px-7">📞 Call {prettyPhone()}</a>
