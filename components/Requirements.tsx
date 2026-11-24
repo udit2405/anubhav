@@ -9,7 +9,7 @@ import { RuleMatcher, tokens, type MatchResult } from "@/lib/match";
 import type { Professional, Requirement } from "@/lib/types";
 import { Autocomplete, Avatar, CheckGroup, Empty, Field, TagInput, VerifiedBadge, feeText } from "./ui";
 
-const BUDGET = ["Fixed project budget", "Per hour", "Per month", "Not decided / Negotiable"];
+const BUDGET = ["Free guidance only", "Fixed project budget", "Per hour", "Per month", "Not decided / Negotiable"];
 const DURATIONS = ["One-time consultation", "Less than 1 month", "1–3 months", "3–6 months", "6+ months / ongoing"];
 type F = { title: string; description: string; category: string; department: string; specializations: string[]; skills: string[]; state: string; city: string; mode: "remote" | "onsite" | "either"; duration: string; budgetType: string; budgetMin: string; budgetMax: string; urgency: string };
 const blank: F = { title: "", description: "", category: "", department: "", specializations: [], skills: [], state: "", city: "", mode: "either", duration: "", budgetType: BUDGET[3], budgetMin: "", budgetMax: "", urgency: "Flexible" };

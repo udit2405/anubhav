@@ -3,7 +3,7 @@
  * 1. Create a Google Sheet named "Anubhav Leads".  2. Extensions → Apps Script → paste this file.
  * 3. Set NOTIFY_EMAIL below.  4. Deploy → New deployment → Web app → Execute as: Me, Who has access: Anyone.
  * 5. Copy the Web app URL into the GitHub repo variable LEADS_URL (Settings → Secrets and variables → Actions → Variables).
- * Each lead type (plan, expert, saathi_booking, saathi_helper, contact) gets its own tab. New fields add columns automatically.
+ * Each lead type (callback, expert, saathi_booking, saathi_helper, contact) gets its own tab. New fields add columns automatically.
  */
 var NOTIFY_EMAIL = "you@example.com";   // <-- change: instant email on every new lead ("" to disable)
 

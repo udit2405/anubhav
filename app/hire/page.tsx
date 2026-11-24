@@ -10,7 +10,7 @@ import { RuleMatcher, type MatchResult } from "@/lib/match";
 export default function Hire() {
   const [posted, setPosted] = useState<Requirement | null>(null); const { rows: pros } = useTable("professionals"); const matches = posted ? (RuleMatcher.match(posted, pros) as MatchResult[]) : [];
   return (<>
-    <PageHeader title="Hire an Expert" sub="Tell us what you need. We will recommend the retired professionals whose experience fits best." />
+    <PageHeader title="Hire an Expert" sub="Tell us what you need. Experts offer free guidance, paid services or both. We recommend the retired professionals whose experience fits best." />
     <div className="container-x py-10 grid gap-10 lg:grid-cols-[1fr_340px]">
       <div>
         {posted ? (

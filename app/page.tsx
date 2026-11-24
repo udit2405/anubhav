@@ -1,63 +1,67 @@
 import Link from "next/link";
 import { CallbackForm } from "@/components/CallbackForm";
-import { MarketExplorer } from "@/components/Markets";
-import { Faq, MobileCta } from "@/components/Interactive";
+import { Faq, FieldExplorer, MobileCta } from "@/components/Interactive";
 import { prettyPhone, telLink } from "@/lib/contact";
 
-const help = [
-  { icon: "🗺️", color: "bg-sky-100", h: "A free Retirement Plan", d: "Answer a few simple questions and see how your savings could be balanced between safe income, property and other options. A specialist then calls you to explain, free of charge.", cta: "Get my free plan", href: "/plan" },
-  { icon: "🎓", color: "bg-mint-100", h: "Earn from your experience", d: "Businesses, young professionals and families want advice from people who have done the work for decades. List yourself for free and choose your own fees and hours.", cta: "List my experience", href: "/register" },
-  { icon: "🤝", color: "bg-gold-100", h: "Help at home", d: "Trusted, verified young helpers to take you to the hospital and back, run errands, or teach you to use your phone. Your family can book for you from anywhere.", cta: "See Anubhav Saathi", href: "/saathi" },
+const ways = [
+  { icon: "🎓", color: "bg-mint-100", h: "Share your expertise", d: "List yourself for free. Advise businesses, mentor young people or guide a neighbour. Choose your own fees and hours.", cta: "List my expertise", href: "/register" },
+  { icon: "🔎", color: "bg-sky-100", h: "Hire an expert", d: "Find a retired engineer, banker, officer, doctor or teacher with decades of real experience. Free guidance or paid work, you choose.", cta: "Hire an expert", href: "/hire" },
+  { icon: "🤝", color: "bg-gold-100", h: "Help at home", d: "Verified young helpers for hospital visits, errands and phone lessons. Families can book for their parents from anywhere.", cta: "See Anubhav Saathi", href: "/saathi" },
+];
+const pricing = [
+  { icon: "🎁", h: "Free", d: "Share your knowledge for the joy of it: mentor students, guide a neighbour, support a cause. Many retirees do this.", tag: "bg-mint-100" },
+  { icon: "💼", h: "Paid", d: "Charge for your time: consulting, projects, training or a monthly retainer. You set the fee, per hour, per consultation or per project.", tag: "bg-gold-100" },
+  { icon: "🤲", h: "Both", d: "Offer some things free and others paid. You decide for each service, and you can change it any time.", tag: "bg-sky-100" },
 ];
 const steps = [
-  ["Tell us a little about you", "Answer a few easy questions, or just request a call back. It takes about two minutes."],
-  ["See your plan", "You instantly see a simple picture of how your savings could be balanced."],
-  ["Talk to a specialist", "A friendly specialist phones you at the time you choose and explains everything in your language. Free."],
-  ["Decide in your own time", "There is no pressure and no obligation. Talk to your family. Ask as many questions as you like."],
+  ["Fill a simple form", "Tell us about your career and what you can help with. About 10 minutes."],
+  ["Send it, or ask for a call", "Send it on WhatsApp or email in one tap, or request a call and we will fill it with you."],
+  ["We publish your profile", "Our team checks it and publishes it, usually within 2 working days. Send your retirement proof for a Verified badge."],
+  ["Get enquiries, you decide", "People ask for you through Anubhav. You choose whether to reply, and whether it is free or paid."],
 ];
 const safety = [
-  ["We never ask for your OTP, PIN or password", "If anyone asks, even if they say they are from Anubhav, please hang up."],
-  ["We never ask you to send us money", "Your money goes only to the bank, fund or developer you choose, never to us."],
-  ["Check every registration", "Ask for RERA and SEBI numbers. We will help you verify them."],
-  ["No pressure to decide", "A genuine opportunity will still be there after you speak to your family."],
+  ["Your phone number stays private", "It is never shown on the website. People write to Anubhav first, and we connect you only if you agree."],
+  ["Free to join, always", "We never charge a retired professional to register or to be listed."],
+  ["Verified badge", "Send your retirement proof and we check it. Verified profiles are trusted more by clients."],
+  ["We never ask for OTP, PIN or money", "If anyone says they are from Anubhav and asks, please hang up and call us."],
 ];
 const faq = [
-  ["Is it really free? What is the catch?", "It is free. We introduce you to registered partners such as property developers, advisers and insurers, and they pay us when you choose to work with them. You never pay Anubhav for your plan or the call."],
-  ["Will I get unwanted calls?", "No. We call only the number you give us, at the time you choose, about what you asked for. Tell us to stop at any time and we will stop."],
-  ["Is my information safe?", "Your details go only to our team and, with your consent, to the specialist assigned to you. Your phone number is never shown on this website and never sold to anyone."],
-  ["Are you giving me investment advice?", "The plan is a simple starting point to help you understand your options. Any advice comes from SEBI-registered advisers and RERA-registered partners, who will explain the risks clearly. Returns are never guaranteed."],
-  ["I do not use computers much. Can I still use this?", "Yes. Just call us on the number above, or send your number and we will call you. We will fill in everything for you."],
-  ["How do I know a call is really from Anubhav?", "We will never ask for your OTP, bank password, UPI PIN or card details, and never ask you to transfer money to us. If anyone does, hang up and call us on the number on this website."],
+  ["Do I have to charge money?", "No. You choose. You can offer free guidance, paid services, or both, and change it whenever you like."],
+  ["Is it free to list myself?", "Yes. Registration and your profile are free, always. We may offer optional extras in the future, but you will never need to pay to be listed."],
+  ["Who can see my phone number?", "Nobody on the website. Clients write to the Anubhav team and we connect you only when you agree."],
+  ["I was not in government service. Can I join?", "Yes. Anyone with real professional experience can register: engineers, bankers, doctors, teachers, officers, scientists, accountants and more."],
+  ["I do not use computers much. Can I still list myself?", "Yes. Request a call back, or call us, and we will fill in the form with you over the phone."],
+  ["How do I hire an expert?", "Browse experts or post what you need. Send an enquiry through Anubhav, and we connect you. Many experts offer a free first conversation. Others charge fees that are shown on their profile."],
 ];
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO: share your expertise */}
       <section className="bg-white border-b border-navy-200 lg:min-h-[calc(100svh-97px)] flex items-center">
         <div className="container-x w-full py-6 lg:py-4 grid lg:grid-cols-[1.15fr_1fr] gap-7 lg:gap-12 items-center">
           <div>
             <p className="eyebrow">A platform built for India’s retired</p>
-            <h1 className="mt-2 text-4xl sm:text-[2.6rem] leading-[1.15]">Everything your retirement needs, in one trusted place.</h1>
-            <p className="mt-4 text-xl text-slate-700 leading-relaxed">Guidance for your savings, work that uses your experience, and trusted help at home. Free, simple, and in your own language.</p>
+            <h1 className="mt-2 text-4xl sm:text-[2.6rem] leading-[1.15]">Decades of experience. New opportunities.</h1>
+            <p className="mt-4 text-xl text-slate-700 leading-relaxed">List yourself for free. Advise businesses, mentor young people or help your community, free or paid, on your own terms.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/plan" className="btn-gold !text-lg !min-h-[52px] !px-7">Get my free retirement plan</Link>
-              <a href={telLink} className="btn-outline !text-lg !min-h-[52px] !px-7">📞 Call {prettyPhone()}</a>
+              <Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link>
+              <Link href="/hire" className="btn-outline !text-lg !min-h-[52px] !px-7">Hire an expert</Link>
             </div>
             <ul className="mt-6 space-y-2.5 text-lg">
-              {["Completely free, with no obligation", "A friendly person calls you, at your time", "Your phone number is never shown or sold"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-mint-500 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}
+              {["Free to list, always", "Charge for your time, or help for free", "Your phone number stays private"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-mint-500 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}
             </ul>
           </div>
-          <CallbackForm compact />
+          <CallbackForm compact title="Need help getting started?" sub="Tell us your number and we will call you and help you list yourself, step by step. Free." />
         </div>
       </section>
 
-      {/* HOW WE HELP */}
-      <section className="section container-x" aria-labelledby="help">
-        <h2 id="help" className="text-3xl sm:text-4xl max-w-3xl">How Anubhav can help you</h2>
-        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Choose what matters to you. You can use one, or all three.</p>
+      {/* THREE WAYS */}
+      <section className="section container-x" aria-labelledby="ways">
+        <h2 id="ways" className="text-3xl sm:text-4xl max-w-3xl">What you can do on Anubhav</h2>
+        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Use one, or all three.</p>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {help.map((x) => (
+          {ways.map((x) => (
             <div key={x.h} className={`card p-7 flex flex-col ${x.color}`}>
               <span className="text-5xl" aria-hidden>{x.icon}</span>
               <h3 className="mt-4 text-2xl">{x.h}</h3>
@@ -68,48 +72,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MARKETS */}
-      <section className="section bg-white border-y border-navy-200" aria-labelledby="mk"><div className="container-x">
-        <h2 id="mk" className="text-3xl sm:text-4xl max-w-3xl">Where can retirement savings work?</h2>
-        <p className="mt-3 text-xl text-slate-700 max-w-3xl">A simple guide to each option: why people choose it, and what to be careful about. Tap an option to read.</p>
-        <div className="mt-10"><MarketExplorer /></div>
+      {/* FREE OR PAID */}
+      <section className="section bg-white border-y border-navy-200" aria-labelledby="fp"><div className="container-x">
+        <h2 id="fp" className="text-3xl sm:text-4xl max-w-3xl">Free or paid. You choose.</h2>
+        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Every expert decides how they want to help. Clients can filter for free or paid.</p>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {pricing.map((x) => <div key={x.h} className={`card p-7 ${x.tag}`}><span className="text-4xl" aria-hidden>{x.icon}</span><h3 className="mt-3 text-2xl">{x.h}</h3><p className="mt-2 text-lg text-slate-800">{x.d}</p></div>)}
+        </div>
       </div></section>
 
-      {/* STEPS */}
-      <section className="section container-x" aria-labelledby="how">
-        <h2 id="how" className="text-3xl sm:text-4xl">How it works</h2>
+      {/* WHICH FIELD */}
+      <section className="section container-x" aria-labelledby="who">
+        <h2 id="who" className="text-3xl sm:text-4xl max-w-3xl">Which field did you serve in?</h2>
+        <p className="mt-3 text-xl text-slate-700 max-w-3xl">Tap a field to see who we are inviting and what people will ask for. Do not see yours? Register anyway.</p>
+        <div className="mt-10"><FieldExplorer /></div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="section bg-white border-y border-navy-200" aria-labelledby="how"><div className="container-x">
+        <h2 id="how" className="text-3xl sm:text-4xl">How listing yourself works</h2>
         <ol className="mt-10 grid gap-6 md:grid-cols-2">
           {steps.map(([h, d], i) => (
             <li key={h} className="card p-6 flex gap-5 items-start"><span className="h-14 w-14 shrink-0 rounded-full bg-navy-800 text-white font-serif text-2xl font-bold flex items-center justify-center" aria-hidden>{i + 1}</span>
               <div><h3 className="text-2xl">{h}</h3><p className="mt-2 text-lg text-slate-700">{d}</p></div></li>
           ))}
         </ol>
-        <div className="mt-10"><Link href="/plan" className="btn-gold !text-lg !min-h-[52px] !px-7">Start my free plan</Link></div>
-      </section>
+        <div className="mt-10"><Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link></div>
+      </div></section>
 
-      {/* SAFETY */}
-      <section className="section bg-sky-100 border-y border-navy-200" aria-labelledby="safe"><div className="container-x">
-        <h2 id="safe" className="text-3xl sm:text-4xl max-w-3xl">Your safety comes first</h2>
-        <p className="mt-3 text-xl text-navy-800 max-w-3xl">Sadly, fraudsters target retired people. We work slowly, clearly and openly, and we promise you this:</p>
+      {/* HIRE */}
+      <section className="section container-x" aria-labelledby="hire"><div className="card bg-sky-100 p-7 sm:p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
+        <div>
+          <p className="eyebrow">For businesses, start-ups and families</p>
+          <h2 id="hire" className="mt-2 text-3xl sm:text-4xl">Looking for an expert?</h2>
+          <p className="mt-3 text-xl text-slate-800">Find people who have done the work for 25 to 40 years. Browse by department, skill and city, or post what you need and see the best matches. Free guidance from some, affordable fees from others.</p>
+          <div className="mt-6 flex flex-wrap gap-3"><Link href="/hire" className="btn-primary !text-lg !min-h-[52px] !px-7">Hire an expert</Link><Link href="/experts" className="btn-outline !text-lg !min-h-[52px] !px-7">Browse experts</Link></div>
+        </div>
+        <ul className="space-y-3 text-lg">{["Search or post a requirement", "See the best matches, with match percentage", "Contact through Anubhav, numbers stay private", "Free or paid, the profile shows it clearly"].map((x) => <li key={x} className="flex gap-3 items-start"><span className="mt-0.5 h-6 w-6 shrink-0 rounded-full bg-navy-800 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}</ul>
+      </div></section>
+
+      {/* SAATHI */}
+      <section className="section bg-white border-y border-navy-200" aria-labelledby="saathi"><div className="container-x grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p className="eyebrow">Anubhav Saathi · Help at home</p>
+          <h2 id="saathi" className="mt-2 text-3xl sm:text-4xl">Need a hand at home? Or want to help?</h2>
+          <p className="mt-3 text-xl text-slate-700">Verified young helpers take elders to the hospital and back, run errands, teach phone and WhatsApp, or simply keep company. Families can book for their parents from anywhere.</p>
+          <div className="mt-6 flex flex-wrap gap-3"><Link href="/saathi" className="btn-primary !text-lg !min-h-[52px] !px-7">Explore Saathi</Link><Link href="/saathi/helper" className="btn-outline !text-lg !min-h-[52px] !px-7">Earn as a helper</Link></div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">{[["🏥", "Hospital visits", "bg-coral-300"], ["📱", "Phone lessons", "bg-gold-100"], ["🧺", "Errands & chores", "bg-mint-100"], ["🚶", "Companionship", "bg-sky-100"]].map(([i, h, c]) => <div key={h} className={`card p-5 ${c}`}><span className="text-4xl" aria-hidden>{i}</span><p className="mt-2 font-bold text-lg">{h}</p></div>)}</div>
+      </div></section>
+
+      {/* TRUST */}
+      <section className="section container-x" aria-labelledby="safe">
+        <h2 id="safe" className="text-3xl sm:text-4xl max-w-3xl">Built on trust</h2>
         <ul className="mt-8 grid gap-5 md:grid-cols-2">
           {safety.map(([h, d]) => <li key={h} className="card p-6 flex gap-4"><span className="h-9 w-9 shrink-0 rounded-full bg-mint-500 text-white flex items-center justify-center text-xl" aria-hidden>✓</span><div><h3 className="text-xl">{h}</h3><p className="mt-1 text-lg text-slate-700">{d}</p></div></li>)}
         </ul>
-      </div></section>
+      </section>
 
       {/* FAQ */}
-      <section className="section container-x max-w-4xl" aria-labelledby="faq">
+      <section className="section bg-white border-y border-navy-200" aria-labelledby="faq"><div className="container-x max-w-4xl">
         <h2 id="faq" className="text-3xl sm:text-4xl">Questions you may have</h2>
         <div className="mt-8"><Faq items={faq} /></div>
-      </section>
+      </div></section>
 
       {/* FINAL CTA */}
       <section className="hero-pattern text-white"><div className="container-x py-14 sm:py-20 text-center">
-        <h2 className="text-3xl sm:text-5xl !text-white max-w-3xl mx-auto">Talk to us today. It is free, and there is no obligation.</h2>
-        <p className="mt-4 text-xl text-navy-100 max-w-2xl mx-auto">Call us, or get your free retirement plan in two minutes.</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4"><a href={telLink} className="btn bg-white text-navy-900 hover:bg-navy-50 !text-lg !min-h-[52px] !px-7">📞 {prettyPhone()}</a><Link href="/plan" className="btn-gold !text-lg !min-h-[52px] !px-7">Get my free plan</Link></div>
+        <h2 className="text-3xl sm:text-5xl !text-white max-w-3xl mx-auto">Experience doesn’t retire. Put yours to work.</h2>
+        <p className="mt-4 text-xl text-navy-100 max-w-2xl mx-auto">Free to join. About 10 minutes. Or call us and we will help you.</p>
+        <div className="mt-8 flex flex-wrap justify-center gap-4"><Link href="/register" className="btn-gold !text-lg !min-h-[52px] !px-7">List my expertise</Link><a href={telLink} className="btn bg-white text-navy-900 hover:bg-navy-50 !text-lg !min-h-[52px] !px-7">📞 {prettyPhone()}</a></div>
       </div></section>
       <div className="h-24 lg:hidden" aria-hidden />
-      <MobileCta href="/plan" label="Free plan" />
+      <MobileCta href="/register" label="List my expertise" />
     </>
   );
 }

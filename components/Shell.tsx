@@ -4,20 +4,19 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useApp } from "@/lib/app";
 import { DISCLAIMER } from "@/lib/data";
-import { NOTICE, RERA_NO, SEBI_RIA } from "@/lib/legal";
 import { LANGS, type Lang } from "@/lib/i18n";
 import { prettyPhone, telLink } from "@/lib/contact";
 
 export function Header() {
   const { t } = useApp(); const path = usePathname(); const [open, setOpen] = useState(false);
-  const links = [["/plan", "Free Retirement Plan"], ["/register", "Earn from Experience"], ["/saathi", "Help at Home"], ["/contact", "Contact"]];
+  const links = [["/register", "List Your Expertise"], ["/hire", "Hire an Expert"], ["/saathi", "Help at Home"], ["/contact", "Contact"]];
   const active = (h: string) => path === h || path === h + "/" || (h !== "/" && path.startsWith(h + "/"));
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-navy-200">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white p-3 z-50">Skip to content</a>
       <div className="bg-navy-800 text-white">
         <div className="container-x flex items-center justify-between gap-3 py-1.5 text-sm">
-          <span className="hidden sm:block">A platform built for India’s retired · Free, no-obligation guidance</span>
+          <span className="hidden sm:block">A platform built for India’s retired · Free to join</span>
           <span className="sm:hidden"><LangSelect compact /></span>
           <a href={telLink} className="font-bold underline-offset-4 hover:underline ml-auto sm:ml-0 whitespace-nowrap">📞 <span className="hidden sm:inline">Call us: </span>{prettyPhone()}</a>
         </div>
@@ -59,12 +58,12 @@ export function Footer() {
   return (
     <footer className="bg-navy-900 text-navy-200 mt-auto">
       <div className="container-x py-12 grid gap-10 md:grid-cols-4 text-lg">
-        <div className="md:col-span-2"><p className="font-serif text-2xl text-white font-bold">Anubhav</p><p className="mt-2 max-w-md">A platform built for India’s retired: guidance, opportunities and help at home, for you and your family.</p>
+        <div className="md:col-span-2"><p className="font-serif text-2xl text-white font-bold">Anubhav</p><p className="mt-2 max-w-md">A platform built for India’s retired: share your experience, hire experts, and get help at home.</p>
           <a href={telLink} className="inline-block mt-4 text-white font-bold text-xl underline">📞 {prettyPhone()}</a></div>
-        <div><p className="font-bold text-white mb-2">Explore</p><ul className="space-y-2"><li><Link href="/plan" className="hover:text-white underline">Free Retirement Plan</Link></li><li><Link href="/register" className="hover:text-white underline">Earn from Your Experience</Link></li><li><Link href="/saathi" className="hover:text-white underline">Help at Home (Saathi)</Link></li><li><Link href="/hire" className="hover:text-white underline">Hire an Expert</Link></li></ul></div>
+        <div><p className="font-bold text-white mb-2">Explore</p><ul className="space-y-2"><li><Link href="/register" className="hover:text-white underline">List Your Expertise</Link></li><li><Link href="/experts" className="hover:text-white underline">Browse Experts</Link></li><li><Link href="/saathi" className="hover:text-white underline">Help at Home (Saathi)</Link></li><li><Link href="/hire" className="hover:text-white underline">Hire an Expert</Link></li></ul></div>
         <div><p className="font-bold text-white mb-2">Company</p><ul className="space-y-2"><li><Link href="/about" className="hover:text-white underline">About Us</Link></li><li><Link href="/contact" className="hover:text-white underline">Contact Us</Link></li><li><Link href="/how-it-works" className="hover:text-white underline">How It Works</Link></li><li><Link href="/privacy" className="hover:text-white underline">Privacy & Terms</Link></li></ul></div>
       </div>
-      <div className="border-t border-navy-700"><div className="container-x py-6 text-base space-y-3"><p>{NOTICE}</p>{(SEBI_RIA || RERA_NO) && <p className="font-bold text-white">{SEBI_RIA && <>SEBI RIA: {SEBI_RIA} · </>}{RERA_NO && <>RERA: {RERA_NO}</>}</p>}<p>{DISCLAIMER}</p><p>© 2026 Anubhav</p></div></div>
+      <div className="border-t border-navy-700"><div className="container-x py-6 text-base space-y-3"><p>{DISCLAIMER}</p><p>© 2026 Anubhav</p></div></div>
     </footer>
   );
 }
