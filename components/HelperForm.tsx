@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Field, CheckGroup, TagInput } from "./ui";
 import { SendButtons } from "./Send";
+import { LEADS_URL, submitLead } from "@/lib/leads";
 import { DAYS, HELPER_LANGS, LAUNCH_CITIES, PLATFORM_FEE_PCT, SERVICES } from "@/lib/saathi";
 
 interface F { name: string; age: string; gender: string; mobile: string; email: string; city: string; area: string; occupation: string; services: string[]; langs: string[]; days: string[]; vehicle: string; experience: string; why: string; c1: boolean; c2: boolean; c3: boolean }
@@ -9,7 +10,7 @@ const blank: F = { name: "", age: "", gender: "", mobile: "", email: "", city: L
 
 export function HelperForm() {
   const [f, setF] = useState<F>(blank); const [err, setErr] = useState<Record<string, string>>({}); const [done, setDone] = useState(false);
-  const set = <K extends keyof F>(k: K, v: F[K]) => setF((p) => ({ ...p, [k]: v }));
+  const set = <K extends keyof F>(k: K, v: F[K]) => { setF((p) => ({ ...p, [k]: v })); setErr((e) => (Object.keys(e).length ? {} : e)); };
   const submit = () => {
     const e: Record<string, string> = {};
     if (f.name.trim().length < 3) e.name = "Please enter your full name.";
@@ -23,6 +24,7 @@ export function HelperForm() {
     if (!f.days.length) e.days = "Select when you are available.";
     if (!f.c1 || !f.c2 || !f.c3) e.consent = "Please tick all three confirmations.";
     setErr(e); if (Object.keys(e).length) { document.getElementById("hf-top")?.scrollIntoView({ behavior: "smooth" }); return; }
+    submitLead("saathi_helper", { name: f.name, age: f.age, gender: f.gender, phone: f.mobile, email: f.email, city: f.city, area: f.area, occupation: f.occupation, services: f.services, languages: f.langs, available: f.days, vehicle: f.vehicle, experience: f.experience, why: f.why });
     setDone(true); document.getElementById("hf-top")?.scrollIntoView({ behavior: "smooth" });
   };
   const body = `NEW HELPER APPLICATION (Anubhav Saathi)
@@ -41,7 +43,7 @@ Why I want to be a helper: ${f.why || "-"}
 Confirmed: willing to submit ID + address proof + police verification; attend interview and training; behave respectfully, never ask elders for money or gifts.`;
   if (done) return (
     <div id="hf-top" className="space-y-6" role="status">
-      <div className="rounded-xl bg-green-50 border border-green-300 p-6"><h2 className="text-2xl font-bold">Thank you, {f.name.split(" ")[0]}! Send your application to us.</h2><p className="mt-2 text-lg text-slate-700">Tap WhatsApp or email. Our team will call you to schedule a short interview and explain the verification steps. You start taking bookings only after verification.</p></div>
+      <div className="rounded-xl bg-green-50 border border-green-300 p-6"><h2 className="text-2xl font-bold">Thank you, {f.name.split(" ")[0]}! {LEADS_URL ? "Application received." : "Send your application to us."}</h2><p className="mt-2 text-lg text-slate-700">Tap WhatsApp or email. Our team will call you to schedule a short interview and explain the verification steps. You start taking bookings only after verification.</p></div>
       <SendButtons subject={`Saathi helper application: ${f.name}`} body={body} filename="anubhav-saathi-helper" />
       <details className="card p-5"><summary className="font-semibold cursor-pointer">Preview what will be sent</summary><pre className="mt-3 whitespace-pre-wrap text-sm">{body}</pre></details>
       <button className="btn-outline" onClick={() => setDone(false)}>← Edit my application</button>

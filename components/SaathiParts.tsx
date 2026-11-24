@@ -11,7 +11,7 @@ export function ServiceExplorer() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3" role="tablist" aria-label="Services">
         {SERVICES.map((x) => (
           <button key={x.id} role="tab" aria-selected={sel === x.id} onClick={() => setSel(x.id)}
-            className={`text-left rounded-xl border-2 p-4 transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-lg -translate-y-0.5" : "border-slate-200 bg-white hover:border-gold-500"}`}>
+            className={`text-left rounded-xl border-2 p-4 transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-hard -translate-y-0.5" : "border-slate-200 bg-white hover:border-gold-500"}`}>
             <span className="text-3xl" aria-hidden>{x.icon}</span>
             <span className="block mt-1 font-bold leading-snug">{x.name}</span>
             <span className={`block text-sm mt-0.5 ${sel === x.id ? "text-gold-300" : "text-gold-700"} font-semibold`}>{x.priceLabel.split(",")[0]}</span>

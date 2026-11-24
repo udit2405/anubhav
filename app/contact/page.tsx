@@ -3,11 +3,12 @@ import { useState } from "react";
 import { Field, PageHeader } from "@/components/ui";
 import { SendButtons } from "@/components/Send";
 import { CONTACT } from "@/lib/contact";
+import { submitLead } from "@/lib/leads";
 
 export default function Contact() {
   const [f, setF] = useState({ name: "", email: "", message: "" }); const [err, setErr] = useState<Record<string, string>>({}); const [ready, setReady] = useState(false);
   const set = (k: string, v: string) => { setF((p) => ({ ...p, [k]: v })); setReady(false); };
-  const check = () => { const e: Record<string, string> = {}; if (f.name.trim().length < 2) e.name = "Please enter your name."; if (!/^\S+@\S+\.\S+$/.test(f.email)) e.email = "Enter a valid email address."; if (f.message.trim().length < 10) e.message = "Please write a short message."; setErr(e); setReady(!Object.keys(e).length); };
+  const check = () => { const e: Record<string, string> = {}; if (f.name.trim().length < 2) e.name = "Please enter your name."; if (!/^\S+@\S+\.\S+$/.test(f.email)) e.email = "Enter a valid email address."; if (f.message.trim().length < 10) e.message = "Please write a short message."; setErr(e); const ok = !Object.keys(e).length; setReady(ok); if (ok) submitLead("contact", { name: f.name, email: f.email, message: f.message }); };
   return (<>
     <PageHeader title="Contact Us" sub="Questions, feedback or need help with your profile? Write to us." />
     <div className="container-x py-10 grid gap-8 lg:grid-cols-3">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { AppProvider } from "@/lib/app";
 import { Footer, Header } from "@/components/Shell";
 
@@ -10,9 +11,12 @@ export const metadata: Metadata = {
   description: "Retired government officers, engineers, bankers, doctors and scientists: list your expertise for free and get hired for consulting, mentoring and project work. Your contact details stay private.",
   openGraph: { title: "Anubhav – Experience Doesn’t Retire", description: "Affordable access to decades of practical expertise.", type: "website", locale: "en_IN" },
 };
+const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const body = DM_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en"><body className="min-h-screen flex flex-col">
+    <html lang="en" className={`${display.variable} ${body.variable}`}><body className="min-h-screen flex flex-col">
       <AppProvider><Header /><main id="main" className="flex-1">{children}</main><Footer /></AppProvider>
     </body></html>
   );

@@ -22,7 +22,7 @@ export function ProfilePreview() {
 
   return (
     <div className="rounded-2xl bg-white text-slate-900 shadow-2xl ring-1 ring-black/5 overflow-hidden">
-      <div className="bg-gold-500 text-white px-5 py-3 flex items-center justify-between gap-3">
+      <div className="bg-gold-500 text-navy-900 px-5 py-3 flex items-center justify-between gap-3">
         <p className="font-semibold">Try it: see your profile in 30 seconds</p>
         <span className="text-sm bg-white/20 rounded-full px-2.5 py-0.5" aria-live="polite">{filled}/5</span>
       </div>

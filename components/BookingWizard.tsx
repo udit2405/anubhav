@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Field, CheckGroup } from "./ui";
 import { SendButtons } from "./Send";
+import { LEADS_URL, submitLead } from "@/lib/leads";
 import { HELPER_LANGS, LAUNCH_CITIES, NEEDS, PLATFORM_FEE_PCT, SERVICES, inr } from "@/lib/saathi";
 
 const STEPS = ["Service", "Who needs help", "When & where", "Review & send"];
@@ -14,7 +15,7 @@ export function BookingWizard() {
   const sp = useSearchParams(); const pre = sp.get("service");
   const [sel, setSel] = useState<Record<string, number>>(() => { const s = SERVICES.find((x) => x.id === pre); return s ? { [s.id]: s.def } : {}; });
   const [f, setF] = useState<F>(blank); const [step, setStep] = useState(0); const [err, setErr] = useState<Record<string, string>>({}); const [done, setDone] = useState(false);
-  const set = <K extends keyof F>(k: K, v: F[K]) => setF((p) => ({ ...p, [k]: v }));
+  const set = <K extends keyof F>(k: K, v: F[K]) => { setF((p) => ({ ...p, [k]: v })); setErr((e) => (Object.keys(e).length ? {} : e)); };
   const chosen = SERVICES.filter((s) => sel[s.id] != null);
   const total = chosen.reduce((a, s) => a + s.price(sel[s.id]), 0);
   const askDest = chosen.some((s) => s.askDestination);
@@ -50,7 +51,7 @@ Elder's phone: ${f.elderPhone || (f.who === "self" ? f.phone : "-")}`, [chosen, 
 
   if (done) return (
     <div id="bk-top" className="space-y-6" role="status">
-      <div className="rounded-xl bg-green-50 border border-green-300 p-6"><h2 className="text-2xl font-bold">One last step: send your booking to us</h2><p className="mt-2 text-lg text-slate-700">Tap WhatsApp (fastest) or email. We will reply within a few hours to confirm your helper, their details and how to pay. Your booking is <strong>not confirmed until we reply</strong>.</p></div>
+      <div className="rounded-xl bg-green-50 border border-green-300 p-6"><h2 className="text-2xl font-bold">{LEADS_URL ? "Booking request received!" : "One last step: send your booking to us"}</h2><p className="mt-2 text-lg text-slate-700">Tap WhatsApp (fastest) or email. We will reply within a few hours to confirm your helper, their details and how to pay. Your booking is <strong>not confirmed until we reply</strong>.</p></div>
       <SendButtons subject={`Saathi booking: ${f.name}`} body={body} filename="anubhav-saathi-booking" />
       <details className="card p-5"><summary className="font-semibold cursor-pointer">Preview what will be sent</summary><pre className="mt-3 whitespace-pre-wrap text-sm">{body}</pre></details>
       <button className="btn-outline" onClick={() => setDone(false)}>← Change my booking</button>
@@ -116,7 +117,7 @@ Elder's phone: ${f.elderPhone || (f.who === "self" ? f.phone : "-")}`, [chosen, 
         </div>
         <div className="mt-10 flex flex-wrap gap-3 justify-between border-t border-slate-200 pt-6">
           <button type="button" className="btn-outline" disabled={step === 0} onClick={() => go(step - 1)}>← Back</button>
-          {step < 3 ? <button type="button" className="btn-primary" onClick={next}>Next →</button> : <button type="button" className="btn-gold" onClick={() => { const e = validate(3); setErr(e); if (!Object.keys(e).length) { setDone(true); document.getElementById("bk-top")?.scrollIntoView({ behavior: "smooth" }); } }}>Continue to send</button>}
+          {step < 3 ? <button type="button" className="btn-primary" onClick={next}>Next →</button> : <button type="button" className="btn-gold" onClick={() => { const e = validate(3); setErr(e); if (!Object.keys(e).length) { submitLead("saathi_booking", { name: f.name, age: f.age, city: f.city, area: f.area, services: chosen.map((s) => `${s.name} x${sel[s.id]}`), estimate_inr: total, needs: f.needs, helper_pref: f.gender, language: f.lang, date: f.flexible ? "flexible" : f.date, time: f.time, destination: f.destination, notes: f.notes, booked_by: f.bookerName, relation: f.who === "self" ? "self" : f.relation, phone: f.phone, elder_phone: f.elderPhone }); setDone(true); document.getElementById("bk-top")?.scrollIntoView({ behavior: "smooth" }); } }}>Continue to send</button>}
         </div>
       </div>
 

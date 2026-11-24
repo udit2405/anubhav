@@ -25,7 +25,7 @@ export function EarningsEstimator() {
     <div className="grid lg:grid-cols-2 gap-8 items-center">
       <div className="space-y-7">
         <div className="flex flex-wrap gap-2" role="group" aria-label="Quick presets">
-          {PRESETS.map(([l, a, b]) => <button key={l} type="button" onClick={() => { setN(a); setFee(b); }} aria-pressed={n === a && fee === b} className={`rounded-full px-5 min-h-[44px] font-semibold border-2 transition-colors ${n === a && fee === b ? "bg-gold-500 border-gold-500 text-white" : "border-navy-600 text-navy-100 hover:border-gold-300"}`}>{l}</button>)}
+          {PRESETS.map(([l, a, b]) => <button key={l} type="button" onClick={() => { setN(a); setFee(b); }} aria-pressed={n === a && fee === b} className={`rounded-full px-5 min-h-[44px] font-semibold border-2 transition-colors ${n === a && fee === b ? "bg-gold-500 border-gold-500 text-white" : "border-navy-600 text-navy-100 hover:border-navy-900"}`}>{l}</button>)}
         </div>
         <div>
           <div className="flex justify-between items-baseline"><label htmlFor="es-n" className="text-lg font-semibold">Consultations per month</label><span className="font-serif text-3xl font-bold text-gold-300">{n}</span></div>
@@ -72,7 +72,7 @@ export function FieldExplorer() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3" role="tablist" aria-label="Fields">
         {CATEGORIES.map((x) => (
           <button key={x.id} role="tab" aria-selected={sel === x.id} onClick={() => setSel(x.id)}
-            className={`text-left rounded-xl border-2 p-4 min-h-[92px] transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-lg -translate-y-0.5" : "border-slate-200 bg-white hover:border-navy-300"}`}>
+            className={`text-left rounded-xl border-2 p-4 min-h-[92px] transition-all ${sel === x.id ? "border-navy-800 bg-navy-800 text-white shadow-hard -translate-y-0.5" : "border-slate-200 bg-white hover:border-navy-300"}`}>
             <span className="text-2xl" aria-hidden>{x.icon}</span><span className="block mt-1 font-semibold leading-snug">{x.name}</span>
           </button>
         ))}
@@ -92,19 +92,19 @@ export function FieldExplorer() {
 }
 
 /* ---------- Step guide */
-const STEPS = [
+export const STEPS = [
   { h: "Fill a simple form", d: "Tell us about your career: department, designation, years of service and what you can help with.", t: "About 10 minutes", icon: "📝" },
   { h: "Send it on WhatsApp or email", d: "One tap sends your details to our team. No app to install, no password to remember.", t: "One tap", icon: "📲" },
   { h: "We publish your profile", d: "We check your details and publish your profile page. Send your retirement proof to earn a Verified badge.", t: "Within 2 working days", icon: "✅" },
   { h: "Get enquiries and earn", d: "Businesses and individuals ask for you. We pass on each request and you decide whether to take it.", t: "Your choice, always", icon: "🤝" },
 ];
-export function StepGuide() {
-  const [i, setI] = useState(0); const s = STEPS[i];
+export function StepGuide({ steps = STEPS, cta = { href: "/register", label: "Start now" } }: { steps?: typeof STEPS; cta?: { href: string; label: string } }) {
+  const [i, setI] = useState(0); const s = steps[i];
   return (
     <div>
       <ol className="relative grid grid-cols-4 gap-2" aria-label="Steps">
-        <div className="absolute top-7 left-[12.5%] right-[12.5%] h-1 bg-slate-200 rounded" aria-hidden><div className="h-full bg-gold-500 rounded transition-all duration-500" style={{ width: `${(i / 3) * 100}%` }} /></div>
-        {STEPS.map((x, k) => (
+        <div className="absolute top-7 left-[12.5%] right-[12.5%] h-1 bg-slate-200 rounded" aria-hidden><div className="h-full bg-gold-500 rounded transition-all duration-500" style={{ width: `${(i / (steps.length - 1)) * 100}%` }} /></div>
+        {steps.map((x, k) => (
           <li key={x.h} className="relative flex flex-col items-center text-center">
             <button type="button" onClick={() => setI(k)} aria-current={i === k ? "step" : undefined} aria-label={`Step ${k + 1}: ${x.h}`}
               className={`h-14 w-14 rounded-full font-bold text-xl border-4 transition-all ${k <= i ? "bg-navy-800 border-gold-500 text-white" : "bg-white border-slate-200 text-slate-500 hover:border-navy-300"} ${k === i ? "scale-110" : ""}`}>{k + 1}</button>
@@ -117,7 +117,7 @@ export function StepGuide() {
         <div><p className="text-sm font-semibold text-gold-700 uppercase tracking-wide">Step {i + 1} · {s.t}</p><h3 className="text-2xl font-bold mt-1">{s.h}</h3><p className="text-lg text-slate-700 mt-2">{s.d}</p></div>
         <div className="flex sm:flex-col gap-2">
           <button className="btn-outline btn-sm" onClick={() => setI(Math.max(0, i - 1))} disabled={i === 0}>← Back</button>
-          {i < 3 ? <button className="btn-primary btn-sm" onClick={() => setI(i + 1)}>Next →</button> : <Link href="/register" className="btn-gold btn-sm">Start now</Link>}
+          {i < steps.length - 1 ? <button className="btn-primary btn-sm" onClick={() => setI(i + 1)}>Next →</button> : <Link href={cta.href} className="btn-gold btn-sm">{cta.label}</Link>}
         </div>
       </div>
     </div>

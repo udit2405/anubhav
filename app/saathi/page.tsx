@@ -29,11 +29,11 @@ export default function Saathi() {
           <div className="mt-5 h-1 w-20 bg-gold-500 rounded" aria-hidden />
           <p className="mt-5 text-lg sm:text-xl text-navy-100 leading-relaxed max-w-xl">Verified young helpers to take you to the hospital and back, run errands, teach you your phone, or simply keep you company. Book in two minutes, even for your parents in another city.</p>
           <div className="mt-8 flex flex-wrap gap-4"><Link href="/saathi/book/" className="btn-gold !text-lg !min-h-[60px] !px-8">Book a helper</Link><Link href="/saathi/helper/" className="btn border-2 border-white/70 text-white hover:bg-white hover:text-navy-900">I want to be a helper</Link></div>
-          <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 max-w-lg text-navy-100">{["Police-verified helpers", "Fixed prices, no haggling", "Family gets updates", "Booking in 2 minutes"].map((x) => <li key={x} className="flex items-center gap-2"><span className="h-6 w-6 shrink-0 rounded-full bg-gold-500 text-white text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}</ul>
+          <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 max-w-lg text-navy-100">{["Police-verified helpers", "Fixed prices, no haggling", "Family gets updates", "Booking in 2 minutes"].map((x) => <li key={x} className="flex items-center gap-2"><span className="h-6 w-6 shrink-0 rounded-full bg-gold-500 text-navy-900 text-sm flex items-center justify-center" aria-hidden>✓</span>{x}</li>)}</ul>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {[["🏥", "Hospital visits", "Home to hospital and back"], ["📱", "Phone lessons", "WhatsApp, UPI, video calls"], ["🧺", "Errands & chores", "Groceries, medicines, bills"], ["🚶", "Companionship", "Walks, chats and company"]].map(([i, h, d]) => (
-            <div key={h} className="rounded-xl bg-white text-navy-900 p-5 shadow-lg"><span className="text-4xl" aria-hidden>{i}</span><p className="mt-2 font-bold text-lg leading-tight">{h}</p><p className="text-sm text-slate-600">{d}</p></div>))}
+            <div key={h} className="rounded-xl bg-white text-navy-900 p-5 shadow-hard"><span className="text-4xl" aria-hidden>{i}</span><p className="mt-2 font-bold text-lg leading-tight">{h}</p><p className="text-sm text-slate-600">{d}</p></div>))}
         </div>
       </div></section>
 
@@ -44,12 +44,12 @@ export default function Saathi() {
 
       <section className="section bg-navy-50" aria-labelledby="how"><div className="container-x">
         <Reveal><h2 id="how" className="text-3xl sm:text-4xl font-bold text-center">How it works</h2></Reveal>
-        <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">{steps.map(([h, d], i) => <Reveal key={h} delay={i * 80}><li className="card p-6 h-full list-none"><span className="h-11 w-11 rounded-full bg-gold-500 text-white font-bold flex items-center justify-center text-lg">{i + 1}</span><h3 className="mt-4 text-xl font-bold">{h}</h3><p className="mt-2 text-slate-700">{d}</p></li></Reveal>)}</ol>
+        <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">{steps.map(([h, d], i) => <Reveal key={h} delay={i * 80}><li className="card p-6 h-full list-none"><span className="h-11 w-11 rounded-full bg-gold-500 text-navy-900 font-bold flex items-center justify-center text-lg">{i + 1}</span><h3 className="mt-4 text-xl font-bold">{h}</h3><p className="mt-2 text-slate-700">{d}</p></li></Reveal>)}</ol>
       </div></section>
 
       <section className="section container-x" aria-labelledby="safe">
         <Reveal><p className="text-gold-700 font-semibold uppercase tracking-wide text-sm">Safety first</p><h2 id="safe" className="mt-2 text-3xl sm:text-4xl font-bold max-w-3xl">Your trust is everything. Here is how we protect it.</h2></Reveal>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{SAFETY.map(([i, h, d], k) => <Reveal key={h} delay={k * 60}><div className="card p-6 h-full hover:-translate-y-1 hover:shadow-lg hover:border-gold-300 transition-all"><span className="text-3xl" aria-hidden>{i}</span><h3 className="mt-3 text-xl font-bold">{h}</h3><p className="mt-2 text-slate-700">{d}</p></div></Reveal>)}</div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{SAFETY.map(([i, h, d], k) => <Reveal key={h} delay={k * 60}><div className="card p-6 h-full hover:-translate-y-1 hover:shadow-hard-lg hover:border-navy-900 transition-all"><span className="text-3xl" aria-hidden>{i}</span><h3 className="mt-3 text-xl font-bold">{h}</h3><p className="mt-2 text-slate-700">{d}</p></div></Reveal>)}</div>
       </section>
 
       <section className="section bg-navy-900 text-white" id="earn"><div className="container-x">
